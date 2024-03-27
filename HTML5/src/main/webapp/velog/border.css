@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body > div{
+	margin-bottom: 2%;
+}
+
+body > div:first-child{
+	border: dotted;
+}
+
+body > div:nth-child(2){
+	border: dashed;
+}
+
+body > div:nth-child(3){
+	border: solid;
+}
+
+body > div:nth-child(4){
+	border: double;
+}
+
+body > div:nth-child(5){
+	border: groove;
+}
+
+body > div:nth-child(6){
+	border: ridge;
+}
+
+body > div:nth-child(7){
+	border: inset;
+}
+
+body > div:nth-child(8){
+	border: outset;
+}
+
+body > div:nth-child(9){
+	border: none;
+}
+
+body > div:nth-child(10){
+	border: hidden;
+}
+
+body > div:last-child{
+	border-style: dotted dashed solid double;
+}
