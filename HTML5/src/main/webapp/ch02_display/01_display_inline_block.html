@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>display 에 대해서 알아본다.</title>
+</head>
+<body>
+
+	<h1>▷ block 방식 - 세로로 떨어지는 방식 ◁</h1>
+
+	<h1>h1의 display의 기본값은 block 방식이다.</h1>
+
+	<h2>h2의 display의 기본값은 block 방식이다.</h2>
+	
+	<h3>h3의 display의 기본값은 block 방식이다.</h3>
+	
+	<h4>h4의 display의 기본값은 block 방식이다.</h4>
+	
+	<h5>h5의 display의 기본값은 block 방식이다.</h5>
+	
+	<h6>h6의 display의 기본값은 block 방식이다.</h6>
+	<!-- h1 부터 h6 까지만 있다. -->
+	
+	<br> <!-- 줄바꿈 -->
+	
+	<div>div는 display가 block 방식이다.</div>
+	<div>div는 display가 block 방식이다.</div>
+	
+	<hr> <!-- 수평선 -->
+	<hr style = "border : solid 3px red;"> <!-- 수평선 -->
+	<hr style = "border : solid 3px blue;"> <!-- 수평선 -->
+	
+	<h1>▷ inline 방식 - 가로로 떨어지는 방식 ◁</h1>
+	
+	<a href="http://www.naver.com">네이버</a>
+	<a href="http://www.daum.net">다음</a>
+	<a href="http://www.nate.com">네이트</a>
+	
+	<br> <!-- 줄바꿈 -->
+	
+	<label>레이블1 label 태그는 display 가 inline 방식이다.</label>
+	<label>레이블2 label 태그는 display 가 inline 방식이다.</label>
+	<label>레이블3 label 태그는 display 가 inline 방식이다.</label>
+	
+	<br> <!-- 줄바꿈 -->
+	
+	<span>스팬1 span 태그는 display 가 inline 방식이다.</span>
+	<span>스팬2 span 태그는 display 가 inline 방식이다.</span>
+	<span>스팬3 span 태그는 display 가 inline 방식이다.</span>
+	
+	<hr> <!-- 수평선 -->
+	
+	<div style="border: solid 1px black; width:500px; height:150px; background-color:#00e699; margin:20px 0;">div1 블럭요소(block element)는 width 및 height 가 적용된다.</div>
+	<div style="border: solid 1px black; width:30%; height: 150px; background-color:#ccff99; margin:20px 0;">div2 블럭요소(block element)는 width 및 height 가 적용된다.</div>
+	
+	<div style="display:block; border: solid 5px black; width:500px; height:150px; background-color:#00e699; margin:100px 0 50px 30px;">div3 블럭요소(block element)는 width 및 height 가 적용된다.</div>
+	<div style="display:block; border: solid 5px black; width:30%; height: 150px; background-color:#ccff99; margin:100px 0 50px 30px;">div4 블럭요소(block element)는 width 및 height 가 적용된다.</div>
+	<!-- display: block; 은 세로형태로 보여주는 것이고, 또한 width 및 height 가 적용된다. -->
+	<br><br>
+	
+	<span style="border: solid 1px black; width:500px; background-color: #ffe6ff;">span1 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	<span style="border: solid 1px black; width:800px; background-color: #80bfff;">span2 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	<span style="border: solid 1px black; width:1000px; background-color: green;">span3 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	
+	<span style="display:inline; border: solid 5px black; width:500px; background-color: #ffe6ff;">span4 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	<span style="display:inline; border: solid 5px black; width:800px; background-color: #80bfff;">span5 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	<span style="display:inline; border: solid 5px black; width:1000px; background-color: green;">span6 인라인요소(inline element)는 width 및 height 가 적용이 안된다.</span>
+	
+	<!-- display: inline; 은 가로형태로 보여주는 것이고, 또한 width 및 height 가 적용이 안된다. -->
+	<br><br>
+	
+	<hr> <!-- 수평선 -->
+	
+	<span style="display:block; border: solid 1px blue;">짜장면</span>
+	<span style="display:block; border: solid 1px blue;">탕수육</span>
+	<span style="display:block; border: solid 1px blue;">팔보채</span>
+	<!-- inline element인 span 태그를 block 방식으로 변경함. 세로형태로 보여주는 것이다. 
+         block 방식의 width 크기를 설정을 안해주면 기본 width 크기는 화면 전체 크기로 잡힌다.  --> 
+         
+    <br><br>
+    
+    <span style="display:inline-block; border: solid 1px green; background-color: #ccff99; width:10%; height: 30px;">족발</span>
+	<span style="display:inline-block; border: solid 1px green; background-color: #ccff99; width:10%; height: 30px; margin: 100px 25px;">교촌치킨</span>
+	<span style="display:inline-block; border: solid 1px green; background-color: #ccff99; width:10%; height: 30px;">미스터피자</span>
+    <!-- inline element인 span 태그를 display 를 inline-block 방식으로 변경함. 가로형태로 보여주면서, width 및 height 를 부여할 수 있게 된다. -->
+    
+    <div style="border: solid 1px blue; background-color: #4A5A08; color: white">여기는 div 입니다.</div>
+    
+    <br><br>
+    
+    <div style="border: solid 1px black; width:60%; margin: 0 auto; height:150px; background-color:#00e699;">
+    div1 블럭요소(block element)를 <span style="font-weight: bold; font-size: 20pt; color: darkgreen; border: solid 3px black;">화면 가운데</span>로 하려면 먼저 width 크기를 잡은 후 <br>
+    margin:0 auto; 으로 주면 0은 상하는 여백이 없고, 좌우의 여백크기는 width 크기를 주고 남은 크기를 1/2로 균등분할해서 준다. <br>
+    그러므로 가운데에 위치하게 된다.  
+    </div>
+    
+    <div style="border: solid 1px blue; 
+    			/* margin: 50px 100px; */ 
+    			/* margin: 3% 6%; */
+    			/* margin: 3%; */
+    			margin-top:3%;
+    			margin-bottom:3%;
+    			margin-left: 3%;
+    			margin-right: 3%;
+    			
+    			/* padding: 10px 20px 30px 40px; */
+    			/* padding: 20px 40px; */
+    			/* padding: 40px; */
+    			/* padding: 3%; */
+    			padding-top: 3%;
+    			padding-bottom:3%;
+    			padding-right:3%;
+    			padding-left:3%;
+    			background-color: #ccff99;">
+    안쪽 여백에 대해서 알아봅니다. <br>
+    안쪽 여백에 대해서 알아봅니다. <br>
+    안쪽 여백에 대해서 알아봅니다. <br>
+    안쪽 여백에 대해서 알아봅니다. <br>
+    </div>
+    
+    <div style="border: solid 1px black; 
+    			width : 80%; 
+    			margin: 0 auto 50px auto;
+    			font-size: 20pt;
+    			text-align: center;
+    			padding: 3% 0;">
+    <span style="background-color: #80bfff; color: white;">
+    inline 방식으로 사용되어지는 태그는 &lt;a&gt;,&nbsp;&nbsp;&nbsp;&lt;label&gt;,&nbsp;&nbsp;&nbsp;&lt;span&gt; 태그가 있습니다.</span></div>
+    <br>
+    <!-- JSP&Servlet, 경고만 나올뿐 출력되는데 아무런 문제가 없다.--> 
+    "ORACLE", She's gone	
+    <br>
+    JSP&amp;Servlet, &quot;ORACLE&quot;, She&#039;s&nbsp;gone
+    <!-- 
+           &lt;    부등호(<)
+           
+           &gt;    부등호(>)
+           
+           &nbsp;  " " 공백(스페이스)1개를 의미한다.
+           
+           &amp;   앰퍼샌드(&)기호
+           
+           &quot;  쌍따옴표(")
+           
+           &#039;  홑따옴표(')
+           
+           &#035;  sharp(#)
+      -->   
+    
+    
+    
+    
+    
+    
+    
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

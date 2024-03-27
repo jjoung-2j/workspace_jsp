@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+
+
+body > div#container{
+	border: solid 0px red;
+	width : 80%;
+	margin: 2% auto;
+	padding: 2%;
+	
+}
+
+body > div#container > form > fieldset{
+	border:solid 3px black;
+}
+
+
+body > div#container > form > fieldset > legend{
+	border: solid 3px black;
+	font-size: 20pt;
+	font-weight: bold;
+	background-color: darkgreen;
+	color: white;
+	margin: 0 3%;			/* 옆쪽으로 옮기기(회원가입정보) */
+	padding: 0.5% 0.8%;		/* 회원가입 박스 안 크기 변경 */
+	
+}
+
+body > div#container > form > fieldset > ul{
+	border : solid 0px red;
+	list-style-type: none;
+	padding-left: 3%;			/* 회원가입 정보와 아이디비번 등 ul 들을 일렬로 세우기 */
+	
+}
+
+body > div#container > form > fieldset > ul > li{
+	border : solid 0px red;
+	line-height: 40px;
+	
+}
+																/* 또는 남자, 여자, 취미생활 등을 제외한 label 에 class= "title" 해주기 */
+body > div#container > form > fieldset > ul > li > label{		/* div 속 안에 넣지 않는 경우 남자, 여자, 취미생활 등 도 모두 같이 잡힌다. */
+	border: solid 0px red;
+	font-size: 14pt;
+	font-weight: bold;
+	color: #000066;			/* #000066 진한 남색 */
+	display: inline-block;
+	width: 12%;
+}
+
+body > div#container > form > fieldset > ul > li > label:hover{
+	color: red;
+}
+
+body > div#container > form > fieldset > ul > li > input.myinput{					/* input 태그에 class="myinput"을 주어 height 설정하기 */
+	border : solid 1px black;
+	padding: 3px;
+	/* height: ' ';  => 기본값*/
+	height: 25px;
+	width: 20%;
+}
+
+body > div#container > form > fieldset > ul > li:nth-child(6) > div			/* 성별 선택, 취미 선택 배열 */
+, body > div#container > form > fieldset > ul > li:nth-child(7) > div{
+	display: inline-block;
+	border: solid 0px red;
+	width : 50%;
+	
+}
+
+div#container > form > fieldset > ul > li:last-child > input:first-child
+, div#container > form > fieldset > ul > li:last-child > input:nth-child(2){
+	width:30%;
+	background-color: black;
+	font-size: 20pt;
+	color:white;
+	
+}
+
+#container > form > fieldset > ul > li:nth-child(6) > div > label:nth-child(1)
+, #container > form > fieldset > ul > li:nth-child(6) > div > label:nth-child(3)
+, #container > form > fieldset > ul > li:nth-child(7) > div > label:nth-child(1)
+, #container > form > fieldset > ul > li:nth-child(7) > div > label:nth-child(3)
+, #container > form > fieldset > ul > li:nth-child(7) > div > label:nth-child(5)
+, #container > form > fieldset > ul > li:nth-child(7) > div > label:nth-child(7){		/* 보기에 있는 글사이즈 변경하기 */
+	font-size: 13pt;
+}
+
+/* input[type="submit"], input[type="reset"] 도 가능 */
+div#container > form > fieldset > ul > li:last-child {
+	border:solid 0px red;
+	width:30%;
+	margin:2% 0 0 5%; 
+
+}
+
+div#container > form > fieldset > ul > li:last-child > input:first-child{
+	margin-right: 10%;
+}
+
+input[type="checkbox"]{
+	margin-right: 3%;
+}
+
+label[for="female"]{
+	border: solid 0px red;
+	margin-left: 3%;
+}
+
+div#container > form > fieldset > ul > li > select{
+	width: 12%;
+	border:solid 1px black;
+	font-size: 13pt;
+}
+
+#container > form > fieldset > ul > li:nth-child(8) > select
+, #container > form > fieldset > ul > li:nth-child(10) > select{
+	height: 28px;
+}
+
+#container > form > fieldset > ul > li:nth-child(9) > label{
+	/* border: solid 1px red !important; */
+	position: relative;
+	top: -30px;
+}
+
+label[for="registerComment"]{
+	/* border: solid 1px red !important; */
+	position: relative;
+	top: -50px;
+}
+
+select option{
+	font-size: 13pt;
+}

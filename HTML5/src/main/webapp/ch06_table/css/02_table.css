@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+div#container{
+	border: solid 0px gray;
+	width: 40%;
+	margin: 5% auto;
+}
+
+div#container > table{
+	border:solid 0px #6699ff;	
+	width: 100%;				/* 이것이 없으면 내용물 만큼 잡힌다. 지금 현재 100%는 화면의 40% 이다. */
+	/* table 태그는 width 를 설정하지 않으면 그 기본 width 크기는 내용물 만큼 잡힌다. */
+	
+	border-collapse: collapse;	/* 표의 경계를 허뭄, 각 td 의 border 의 경계를 없앤다. */
+	margin-bottom: 10%;
+}
+
+div#container > table  th
+, div#container > table  td{
+	border:solid 1px #6699ff;
+}
+
+div#container > table  th{
+	background-color: #ccc;
+	height: 40px;
+}
+
+div#container > table  td{
+	height: 25px;
+}
+
+div#container > table > tbody > tr > td:first-child
+, div#container > table > tbody > tr > td:last-child{		
+	text-align: center;
+}
+
+div#container > table > tbody > tr > td:nth-child(2) {
+	text-align: right;
+}
+
+div#container > table > caption{
+	font-size: 16pt;
+	font-weight: bold;
+	border: solid 0px red;
+	padding: 1.3% 0;
+}

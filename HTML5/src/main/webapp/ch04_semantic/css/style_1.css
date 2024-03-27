@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* 기본적인 폰트 설정하기 */
+
+body{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	
+}
+
+/* 여백 설정 */
+body{
+	border: solid 0px red;
+	word-break : break-all;							/* 공백없이 영어로만 되어질 경우 해당구역을 빠져나가므로 이것을 막기위해서 사용한다. */
+	margin: 0;										/* 바깥 여백을 없는 것으로 하겠다. (default 조금 공간이 있다.)*/
+	padding: 0;										/* 안쪽 여백을 없는 것으로 하겠다. (default 값)*/
+	
+}
+
+header#page_header > nav > ol{
+	border: solid 1px red;
+	
+}
+
+header#page_header > nav > ul{
+	border: solid 1px blue;
+	
+}
+
+header#page_header > nav > ol > li
+, header#page_header > nav > ul > li{
+	border: solid 1px gray;
+	width: 30%;
+	height:50px;
+	
+}
+
+header#page_header > div > ul{
+	list-style-type:none;
+	border: solid 1px red;
+	padding: 30px 0 30px 50px;
+	
+}
+
+header#page_header > div > ul > li{
+	display : inline-block;
+	border: solid 1px gray;
+	width: 150px;
+	height: 30px;
+	margin: 0 30px 0 0;
+	text-align: center;
+	background-color: #999;		
+	font-weight: bold;
+	font-size: 16pt;
+	
+}
+

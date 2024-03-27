@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+div#container{
+	border: solid 0px red;
+	width: 70%;
+	margin: 5% auto;
+	text-align: center;
+}
+
+div#container > div {
+	border: solid 0px blue;
+	margin-top: 7%;
+}
+
+div#container > div:last-child{
+	width: 50%;
+	margin: 0 auto;
+	background-color: yellow;
+}
+
+div#container > div:last-child > img{		/* div:nth-child(3) 인 이유 = ?  */
+	width: 150px;
+	height: 100px;
+	 
+	
+}

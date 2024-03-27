@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* 기본적인 폰트 설정하기 */
+
+*{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	
+}
+
+/* 여백 설정 */
+body{
+	border: solid 0px red;
+	word-break : break-all;							/* 공백없이 영어로만 되어질 경우 해당구역을 빠져나가므로 이것을 막기위해서 사용한다. */
+	margin: 0;										/* 바깥 여백을 없는 것으로 하겠다. (default 조금 공간이 있다.)*/
+	padding: 0;										/* 안쪽 여백을 없는 것으로 하겠다. (default 값)*/
+	
+}
+
+body > div#wrap{
+	border: solid 1px blue;
+	width: 70%;
+	margin: 0 auto;
+	
+}
+
+body > div#wrap > header#page_header > nav > ul{
+	list-style-type: none;			/* 기호를 안 보이게 함 */
+	border: solid 0px red;
+	padding: 0;
+	
+}
+
+body > div#wrap > header#page_header > nav > ul > li{
+	display: inline-block;
+	border: solid 0px gray;
+	width: 15%;
+	margin: 0 2% 0 0;
+	
+}
+
+/* a 태그의 밑줄 제거하기 */
+a{
+	text-decoration: none;
+	font-size: 15pt;
+}
+
+/* a 태그에 방문하기전의 링크 */
+a:link{
+	color: blue;
+}
+
+/* a 태그에 방문후의 링크 */
+a:visited{
+	color: blue;
+}
+
+/* a 태그에 마우스 포인터를 올려 놓았을 때 */
+body > div#wrap > header#page_header > nav > ul > li > a:hover{
+	background-color: black;
+	color:yellow;
+	font-weight: bold;
+}
+
+div#wrap > hr{
+	border: solid 2px blue;
+	margin-top: 1.5%;
+	
+}
+
+body > div#wrap > section#posts{
+	border: solid 1px red;
+	float: left;
+	width: 72%;
+	
+}
+
+body > div#wrap > section#sidebar{
+	border: solid 1px green;
+	float: right;
+	width: 24%;
+	
+}
+
+body > div#wrap > footer#page_footer{
+	border: solid 0px orange;
+	/* clear : right; */
+	clear: both;	/* float 을 해제해서 페이지 하단에 안착시킨다.  */
+	text-align: center;
+	
+}
+
+body > div#wrap > section#posts aside{		
+/* body > div#wrap > section#posts 태그속에 있는 자식을 포함한 모든 자손태그들 중 aside 태그(엘리먼트, 요소)를 가리키는 것이다. */
+	border: solid 0px gray;
+	float: right;					/* 가로방향으로 표시하는데 출발점은 오른쪽에서 출발한다. */
+	width: 35%;
+	font-size: 18pt;
+	font-weight: bold;
+	color: #b30059;
+	line-height: 180%;				/* 줄 간격 180% 는 원래것의 1.8배라는 것이다.*/
+	/* line-height: 40px; */		/* 줄 간격 */
+	margin-left: 3%;
+	margin-top: -3.5%;				/* 양수를 줄 경우 아래로 내려가고 음수를 줄 경우 위로 올라간다. */
+	
+}
+
+body > div#wrap > section#posts article > p{
+	border: solid 0px green;
+	margin: 0 0 3% 0;			/* 상 우 하 좌 */
+	
+}
+
+body > div#container{			/* 1,2,3,4 파일 */
+	border: solid 0px gray;
+	font-size: 20pt;
+	width: 50%;
+	margin: 5% auto;
+	text-align: center;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

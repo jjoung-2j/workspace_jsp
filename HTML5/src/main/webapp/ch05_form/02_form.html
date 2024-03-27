@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form 에 대해서 알아봅니다. -2</title>
+<link rel = "stylesheet" href="css/02_form.css">
+</head>
+<body>
+	<div id="container">
+	
+		<form>
+			<fieldset>
+				<legend>회원가입정보</legend>
+				<ul>
+					<li>
+						<label for ="userid">아이디</label>
+						<input id="userid" class="myinput" type="text" size="20" maxlength="20" autofocus required />
+					</li>
+					<li>
+						<label for="passwd1">암호</label>
+						<input id="passwd1" class="myinput" type="password" size="20" maxlength="20" required/>
+					</li>
+					<li>
+						<label for="passwd2">암호확인</label>
+						<input id="passwd2" class="myinput" type="password" size="20" maxlength="20" required/>
+					</li>
+					<li>
+						<label for="name">성명</label>
+						<input id="name" class="myinput" type="text" size="20" maxlength="20" required/>
+					</li>
+					<li>
+						<label for="email">이메일</label>
+						<input id="email" class="myinput" type="email" size="40" maxlength="40" required placeholder="예: hongkd@gmail.com"/>
+					</li>
+					<li>
+						<label>성별</label>
+						<div>
+							<label for="male">남자</label>
+							<input id="male" type="radio" name="gender"/>
+							
+							<label for="female">여자</label>
+							<input id="female" type="radio" name="gender"/>
+						</div>
+				   <!-- <input id="female" type="radio" name="gender" checked/> -->		<!-- checked 기본으로 체크되어진 상태로 만드는 것 (default) -->
+					</li>
+					<li>
+						<label>취미</label>
+						<div>
+							<label for="game">게임</label>
+							<input id="game" type="checkbox"/>
+							
+							<label for="movie">영화감상</label>
+							<input id="movie" type="checkbox">
+					   <!-- <input id="movie" type="checkbox" checked/> -->		<!-- checked 기본으로 체크되어진 상태로 만드는 것 (default) -->
+							
+							<label for="writing">글쓰기</label>
+							<input id="writing" type="checkbox"/>
+							
+							<label for="music">음악감상</label>
+							<input id="music" type="checkbox"/>
+						</div>
+					</li>
+					<li>
+						<label>최종학력</label>
+						<select>
+							<option>고졸</option>
+							<option>초대졸</option>
+							<option selected>대졸</option>		<!-- option selected 기본값. selected 가 없을시 첫번째 값 default -->
+							<option>대학원졸</option>
+						</select>
+					</li>
+					<li>
+						<label>선호음식</label>
+						<select size="3" multiple>				<!-- 3개를 보여주고 복수개 선택 가능 -->
+							<option>짜장면</option>
+							<option>파스타</option>
+							<option>팟타이</option>		
+							<option>부대찌개</option>
+							<option>떡볶이</option>
+							<option>치킨</option>
+							<option>피자</option>
+						</select>
+					</li>
+					<li>
+						<label>선호프로그램</label>
+						<select>
+							<optgroup label="데이터베이스">			
+								<option>ORACLE</option>
+								<option>MSSQL</option>
+								<option>SYBASE</option>	
+							</optgroup>
+							
+							<optgroup label="개발언어">
+								<option>Java</option>
+								<option>JSP</option>
+								<option>Spring</option>
+								<option>Python</option>
+								<option>C/C++</option>
+							</optgroup>
+						</select>
+					</li>
+					<li>
+						<label for="browsername">웹브라우저</label>
+		                <input id="browsername" class="myinput" list="browserType"/>	<!-- 있으면 선택 없으면 타이핑 -->
+		                <datalist id="browserType">
+		                    <option value="Chrome" />
+		                    <option value="MS Edge" />
+		                    <option value="Firefox" />
+		                    <option value="Opera" />
+		                    <option value="Safari" />
+		                </datalist>
+					</li>
+					<li>
+						<label for="addfile">파일첨부</label>
+						<input id="addfile" class="myinput" type="file"/>
+					</li>
+					<li>
+						<label for="registerComment">가입인사말</label>
+						<textarea id="registerComment" rows="5" cols="30"></textarea>
+					</li>
+					<li>
+						<input type="submit" value="확인"/>
+						<input type="reset" value="취소"/>
+					</li>
+					
+				</ul>
+				
+			</fieldset>
+		</form>
+	
+	</div>
+
+</body>
+</html>

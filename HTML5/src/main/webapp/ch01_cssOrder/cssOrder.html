@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS(Cascading Style Sheets)의 우선순위에 대해서 알아본다.</title>
+
+<link rel="stylesheet" href="./mycss.css">
+
+<style type="text/css">
+
+/*
+  === CSS(Cascading Style Sheets)의 우선순위 ===
+  
+  !important(css 강제적용) > 해당 태그에 직접준것(인라인방식) > HTML 파일에서 준 style 태그(임베디드방식) > 외부에 있는 .css 파일을 로드 한것(예: <link rel="stylesheet" href="mycss.css"> )   
+*/
+
+div{
+	border: dashed 1px blue; 					/* 테두리 : 점선 두께(1px) 파랑색 */
+	background-color: #80bfff !important;		/* 배경색 : #80bfff 로 지정 */
+	color: #00004d;							/* 글자색 : #00004d */
+	font-style: normal;							/* 글자모양: 똑바르게 */
+	text-align: right;							/* 글자정렬: 오른쪽 */
+	
+	margin: 30px 0;
+}
+
+</style>
+</head>
+<body>
+	<!-- HTML의 주석문 -->
+	
+	<div style = "border : solid 5px #003300; background-color : #008000">나는 div1</div>
+	<div>나는 div2</div>
+	<div>나는 div3</div>
+	<div style = "font-size: 20pt; text-align: left; background-color : #000;">나는 div4</div>
+
+
+</body>
+</html>

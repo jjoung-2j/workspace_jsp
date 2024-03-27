@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+div#container{
+	border: solid 0px red;
+	width:90%;
+	margin: 2% auto;
+}
+
+div#container > h1{
+	border: solid 0px blue;
+	text-align: center;
+	padding-bottom: 3%;
+}
+
+div#container div.title{
+	border: solid 0px red; 
+	text-align: center;
+	font-size: 16pt;
+	margin-bottom: 30px;
+}
+
+div#container > div#first_div
+, div#container > div#second_div {
+	border: solid 0px green;
+	width: 48%;
+}
+
+div#container > div#second_div > div {
+	display: inline-block;
+}
+
+
+div#container > div#third_div > div {
+	border: solid 0px green;
+	text-align: center;
+}
+
+div#container > div#first_div > img:nth-child(2)
+, div#container > div#second_div > div:nth-child(2){		/* 또는 div 로 감싸기 */
+	float:right;
+}
+
+div#container > div#first_div
+, div#container > div#second_div {
+	clear:both;
+}
+
+/* 방법1(inline-block)
+div#container > div#fourth_div > div:nth-child(2) {
+	border: solid 0px red;
+	margin-left: 16%;
+}
+
+div#container > div#fourth_div > div{
+	border: solid 0px blue;
+	display: inline-block;
+} 
+*/
+
+/* 방법 2(float: left, left, right 주기)
+div#container > div#fourth_div > div:first-child{		inline-block 을 사용하지 않고 하기
+	border: solid 0px red;
+	float: left;
+}
+
+div#container > div#fourth_div > div:nth-child(2){
+	border: solid 0px red;
+	float:left;
+	margin: 0 0 0 16.5%;
+} 
+
+div#container > div#fourth_div > div:last-child{		
+	float:right;
+}
+*/
+
+/* 방법3 */
+div#container>div#fourth_div>div{
+	border: solid 0px red;
+    float: left;
+    text-align: center;
+    /* width: 33%;  => border 가 있는 경우 */
+    width: 33.29%;
+    height: 230px;
+} 
+
+/* 강사님 방법
+div#container > div#fourth_div > div:first-child {
+   border: solid 0px blue;
+   background-color: pink;
+   float: left;
+   width: 30%;
+} 
+
+div#container > div#fourth_div > div:nth-child(2) {
+   border: solid 0px red;
+   background-color: yellow;
+   float: left;
+   width: 40%;
+   text-align: center;
+} 
+
+div#container > div#fourth_div > div:last-child {
+   border: solid 0px blue;
+   background-color: green;
+   float: right;
+   width: 30%;
+   text-align: right;
+}
+*/
+
+
+
+
+

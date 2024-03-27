@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 만들기 4[cologroup 태그]</title>
+<link rel="stylesheet" href="css/04_table.css">
+</head>
+<body>
+	<div id="container">
+		<table>
+			<caption align="bottom">&lt;테이블&gt;테이블에 대한 설명문구1</caption>
+			
+			<colgroup span="3" id="firstCologroup"/>
+			<!--  colgroup 또는 줄여서 col 이라고 사용할 수 있다.
+                span="숫자" 이때 숫자는 묶어줄 열의 개수를 말한다.
+                span 에 처음으로 숫자를 주었는데 그 숫자가 3 이므로 첫번째 열부터 세번째 열까지를 그룹으로 묶겠다는 뜻이다. 
+          	-->
+			<colgroup span="1" id="secondCologroup"/>
+			<!--  colgroup 또는 줄여서 col 이라고 사용할 수 있다.
+                span="숫자" 이때 숫자는 묶어줄 열의 개수를 말한다.
+                span 에 처음으로 숫자를 주었는데 그 숫자가 1 이므로 다음번 열 1개만(네번째 열) 그룹으로 묶겠다는 뜻이다. 
+          	-->
+			<thead>
+				<tr>
+					<th>제품이름과 설명</th>
+					<th>개당 가격</th>
+					<th>박스당 개수</th>
+					<th>총 가격</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>블라우스 - 붉은색 실크</td>
+					<td>20,000원</td>
+					<td>150</td>
+					<td>3,000,000</td>
+				</tr>
+				
+				<tr>
+					<td>바지 - 검은색 원단</td>
+					<td>4,000원</td>
+					<td>300</td>
+					<td>1,200,000</td>
+				</tr>
+				
+				<tr>
+					<td>새우깡</td>
+					<td>3,000원</td>
+					<td>500</td>
+					<td>1,500,000</td>
+				</tr>
+				
+				<tr>
+					<td>감자깡</td>
+					<td>5,000원</td>
+					<td>200</td>
+					<td>1,000,000</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	
+</body>
+</html>

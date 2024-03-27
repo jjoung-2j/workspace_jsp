@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form 에 대해서 알아봅니다. -1</title>
+
+<link rel="stylesheet" href="css/01_form.css">
+
+</head>
+<body>
+	<div id="container">
+	
+	<form>
+		<!-- fieldset 태그는 폼에 입력되어지는 정보들을 그룹핑(묶어주는것)하는 역할 -->
+		<fieldset>
+		
+			<!-- legend 태그는 fieldset 에 대한 제목을 지정하는 것이다. -->
+			<legend>프로젝트 정보</legend>
+			
+			<ul>
+				<li>
+					<label for="prjname">프로젝트명</label>
+					<input id="prjname" type="text" size="20" maxlength="30" placeholder="예: 인사관리프로젝트" autofocus required/>
+					<!-- autofocus : 페이지 로드시 자동 포커스 지정 
+                       placeholder="예: 인사관리프로젝트" 은 예시로 미리 적어주는 것 
+                       required : 필수 입력 지정
+                  -->  
+				</li>
+				<li>
+					<label>중요도</label>
+					<input type="range" min="1" max="10" value="5" step= "1"/>
+					<!-- range : 슬라이드 막대로 표시하는 숫자 필드 -->
+				</li>
+				<li>
+					<label>완료예상시간</label>
+					<input type="number" min="1" max="100" value="10" step="1"/>
+					<!-- number : 숫자 필드 -->
+				</li>
+				<li>
+					<label>시작날짜</label>
+					<input type="date"/>
+					<!-- date : 날짜 필드 -->
+				</li>
+				<li>
+					<label>월</label>
+					<input type="month"/>
+					<!-- month : 월단위 날짜 필드 -->
+				</li>
+				<li>
+					<label>주</label>
+					<input type="week"/>
+					<!-- week : 주단위 날짜 필드 -->
+				</li>
+				<li>
+					<label>시작시간</label>
+					<input type="time"/>
+					<!-- time : 시간 필드 -->
+				</li>
+				<li>
+					<label for="email">이메일</label>
+					<input id="email" type="email" required/>
+					<!-- email : 이메일 필드 
+						required : 필수 입력 지정 -->
+				</li>
+				<li>
+					<label for="url">URL</label>
+					<input id="url" type="url" required/>
+					<!-- url : url 필드 
+						required : 필수 입력 지정 -->
+				</li>
+				<li>
+					<label for="search">검색</label>
+					<input id="search" type="search"/>
+					<!-- search : 검색 필드 -->
+				</li>
+				<li>
+					<label for="color">프로젝트 색상</label>
+					<input id="color" type="color"/>
+					<!-- "color" : 색상지정 필드 -->
+				</li>
+				<li>
+					<input type="submit" value = "전송"/>
+					<input type="reset" value = "취소"/>
+				</li>
+			</ul>
+		
+		</fieldset>
+	
+	</form>
+	
+	</div>
+
+</body>
+</html>

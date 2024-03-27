@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 만들기 5[thead, tbody, tfoot, colspan]</title>
+<link rel="stylesheet" href="css/05_table.css">
+</head>
+<body>
+	<div id="container">
+		<table>
+			<!-- 
+				thead 태그와 tfoot 태그는 테이블에서 오로지 1번만 사용한다.
+               	thead 태그는 표의 타이틀 용도로 쓰이고,
+               	tfoot 태그는 표의 마지막에 요약데이터나 총계등을 보여줄 때 사용한다. 
+               	tbody 태그는 표의 데이터를 표시하는 용도로 쓰인다.
+          	-->
+			<caption align="bottom">&lt;테이블&gt;테이블에 대한 설명문구1</caption>
+			
+			<thead>
+				<tr>
+					<th width= "40%">제품이름과 설명</th>
+					<th width= "20%">개당 가격</th>
+					<th width= "15%">박스당 개수</th>
+					<th>총 가격</th>					<!-- 맨 마지막 width 는 나머지(100- 기존) 이므로 굳이 적을 필요 없다. -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>블라우스 - 붉은색 실크</td>
+					<td>20,000원</td>
+					<td>150</td>
+					<td>3,000,000</td>
+				</tr>
+				
+				<tr>
+					<td>바지 - 검은색 원단</td>
+					<td>4,000원</td>
+					<td>300</td>
+					<td>1,200,000</td>
+				</tr>
+				
+				<tr>
+					<td>새우깡</td>
+					<td>3,000원</td>
+					<td>500</td>
+					<td>1,500,000</td>
+				</tr>
+				
+				<tr>
+					<td>감자깡</td>
+					<td>5,000원</td>
+					<td>200</td>
+					<td>1,000,000</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">총박스 개수 및 총금액</td>	<!-- colspan 은 열병합인데 하나로 병합한다. -->
+					<td>1,150</td>
+					<td>6,700,000원</td>
+				</tr>
+			</tfoot>
+		</table>
+	
+	</div>
+</body>
+</html>
