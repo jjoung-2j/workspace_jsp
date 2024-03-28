@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+div#container{
+	border: solid 0px red;
+	width:90%;
+	margin: 2% auto;
+}
+
+div#container > h1{
+	border: solid 0px blue;
+	text-align: center;
+	padding-bottom: 3%;
+}
+
+div#container div.title{
+	border: solid 0px red; 
+	text-align: center;
+	font-size: 16pt;
+	margin-bottom: 30px;
+}
+
+div#container > div#fourth_div{
+	border: solid 0px red; 
+	display: flex;
+	height: 250px;
+}
+
+div#container > div#fourth_div > div{
+	border: solid 0px green;
+	/* margin: auto;  이렇게 실행할 시 1번째 사진과 3번째 사진의 끝이 맨끝에 다다르지 않는다.*/
+}
+
+div#container > div#fourth_div > div:nth-child(2) {
+	border: solid 0px blue;
+	margin: 0 auto;
+}
+
+div#container > div#five_div{
+	border: solid 0px red; 
+	display: flex;
+	height: 350px;
+	background-color: #eee;
+	margin-top: 10%;
+}
+
+div#container > div#five_div > div{
+	border: solid 0px green;
+	margin: 5% auto;		/* 상우하좌 균등분할 */
+	/* div 전체가 아니라 이미지만 가운데 하고 싶을 경우 그냥 auto 가 아니라 상하를 지정해준다. */
+}
+
+
+
+
+
