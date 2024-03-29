@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+body > div#container{
+	border: solid 0px blue;
+	width: 80%;
+	margin: 0 auto;
+}
+
+body > div#container > div.flex:first-child{
+	border: solid 0px green;
+	display: flex;
+	height: 110px;
+	margin-bottom: 2%;
+}
+
+
+body > div#container > div.flex:first-child > form {
+	border: solid 0px red;
+	width: 23%;
+	margin: auto 0;
+}
+
+body > div#container > div#header > form > fieldset{
+	border: none; 
+	margin: 0 auto;
+	padding: 0;
+}
+
+body > div#container > div#header > form > fieldset > ul{
+	border: solid 0px red;
+	margin: 0 auto;
+	padding-left: 7%;
+}
+
+body > div#container > div#header > form > fieldset > ul > li.flex {
+	border: solid 0px red;
+	display: flex;
+	margin-top: 2%;
+	list-style-type: none;
+	text-align: left;
+}
+
+body > div#container > div#header > form > fieldset > ul > li.flex > label.blank{
+	border: solid 0px red;
+	width: 35%;
+}
+
+body > div#container > div#header > form > fieldset > ul > li.flex > input[type="submit"]{
+	margin-right: 5%;
+}
+
+body > div#container > div.flex:first-child > div{
+	border: solid 0px red;
+	margin: auto 0;
+	height: 110px;
+}
+
+body > div#container > div.flex{
+	display: flex;
+	height: 500px;
+}
+
+body > div#container > div.flex > div{
+	margin: 0 auto;
+}
+
+body > div#container > div.flex > div#side{
+	border: solid 0px red;
+	width: 22%;
+	background-color: gray;
+	margin-left: 2%;
+}
+
+body > div#container > div.flex > div#side > ul > li
+, body > div#container > div.flex > div#contents > ul > li{
+	list-style-type: none;
+	color: white;
+}
+
+body > div#container > div.flex > div#side > ul > li{
+	line-height: 250%;
+	font-weight: bold;
+	font-size: 18pt;
+}
+
+body > div#container > div.flex > div#contents{
+	border: solid 0px red;
+	background-color: #343534;
+	overflow: auto;
+	width: 70%;
+}
+
+body > div#container > div.flex > div#contents > ul{
+	padding-left: 2%;
+}
+
+body > div#container > div.flex > div#contents > ul > li{
+	margin-bottom: 5%;
+}
+
+body > div#container > footer.flex{
+	border: solid 0px red;
+	display: flex;
+	width: 95%;
+	margin: 2% auto;
+	text-align: center;
+	background-color: #E2E2E2;
+	font-weight: bold;
+	height: 50px;
+	
+	
+}
+
+body > div#container > footer.flex > div{
+	margin: auto;
+}
