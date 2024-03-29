@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스크립트 태그는 body 태그 내의 맨마지막에 위치해도 됩니다.</title>
+</head>
+<body>
+	<h1 id="h1"></h1>
+	<h2>스크립트 태그는 body 태그 내의 맨마지막에 위치해도 됩니다.</h2>
+	
+	<p id="demo">변경전 p태그</p>
+	<button type="button" onclick="myFunction()">클릭하세요.</button>
+
+	<script type="text/javascript">
+		function myFunction() {
+			document.getElementById("demo").innerHTML = "p태그의 내용이 변경되었습니다";
+			document.getElementById("demo").innerHTML = "p태그의 <span style='color: blue; font-weight: bold;'>내용이 변경</span>되었습니다";
+		}
+
+		document.getElementById("h1").innerHTML = "<span style='color: green;'>h1</span> 태그 입니다.";	
+	</script>
+</body>
+</html>
