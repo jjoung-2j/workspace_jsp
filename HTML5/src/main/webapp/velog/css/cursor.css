@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+body > h1{
+	display: inline-block;
+	width: 30%;
+}
