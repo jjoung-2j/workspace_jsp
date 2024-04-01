@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "p태그의 내용이 변경되었습니다";
+            document.getElementById("demo").innerHTML = "p태그의 <span style='color: red; font-weight: bold;'>내용이 변경</span>되었습니다";
+        }
+    </script>
+</head>
+<body>
+    <p id="demo">변경전 p태그</p>
+	<button type="button" onclick="myFunction()">클릭하세요.</button>
+	<!-- <button type="button" onmouseover="myFunction()">마우스를 여기에 올려 놓으세요.</button> -->
+	<!-- <button type="button" ondblclick="myFunction()">여기를 더블클릭 하세요.</button> -->
+</body>
+</html>
