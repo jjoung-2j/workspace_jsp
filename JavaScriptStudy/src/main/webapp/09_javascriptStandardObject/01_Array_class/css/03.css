@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+div#div_fruit {
+	display: flex;
+}
+
+div#div_fruit > ul {
+	list-style-type: none;
+}
+
+div#div_fruit > ul:first-child {
+	color: red;
+}
+
+div#div_fruit > ul:last-child {
+	color: blue;
+}
+
+hr {
+	border: solid 1px red;
+	margin: 50px 0;	
+}
+
+table {
+	border: solid 0px gray;
+	width: 140px;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: solid 1px gray;
+}
+
+td {
+	text-align: center;
+}
+
+table#tbl > tfoot > tr:first-child > td:last-child {
+	color: red;
+}
+
+table#tbl > tfoot > tr:last-child > td:last-child {
+	color: blue;
+}
+
+div#quiz > table {
+	width: 500px;
+	margin-bottom: 50px;
+}
+
+
+
+
+
+
+

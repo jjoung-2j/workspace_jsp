@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>금액계산하기</title>
+
+<link rel="stylesheet" href="css/04.css">
+
+<script type="text/javascript" src="js/04.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+		
+	<div id="calcurator">	
+	    <h2>계산서</h2>
+	    <table id="tbl">
+			<thead>
+	           <tr>
+				   <th width="25%">제품명</th>
+				   <th width="50%">단가 및 수량</th>
+				   <th width="25%">금액</th>		
+			   </tr>	
+			</thead>
+			<tbody>
+				<tr>
+					<td>사과</td>
+					<td>1,000<input type="number" min="0" max="10" value="0" id="apple" /></td><td id="apple">0</td>   
+				</tr>
+				<tr>
+					<td>딸기</td>
+					<td>2,000<input type="number" min="0" max="10" value="0" id="strawberry" /></td><td id="strawberry">0</td> 
+				</tr>
+				<tr>
+					<td>참외</td>
+					<td>3,000<input type="number" min="0" max="10" value="0" id="melon" /></td>
+					<td id="melon">0</td>
+				</tr>	
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">총&nbsp;&nbsp;액</td>
+					<td>0</td>
+				</tr>	
+			</tfoot>		
+		</table>
+	</div>
+
+	<div id="display_error">
+		<span>수량은 0개 이상 10개 이하 이어야 합니다.</span>
+	</div>	
+
+</div>
+
+</body>
+</html>

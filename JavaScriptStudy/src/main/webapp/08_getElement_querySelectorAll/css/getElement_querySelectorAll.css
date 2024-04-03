@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+button#btn_ok_1, button#btn_ok_2{
+    background-color: green;
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트에서 사용되는 데이터 타입에 대해서 알아봅니다.</title>
+
+<link rel="stylesheet" href="css/typeof.css">
+
+<script type="text/javascript" src="js/typeof.js"></script>
+
+</head>
+<body>
+	<div id="container">
+		<table>
+			<thead>
+				<tr>
+					<th>데이터 값</th>
+					<th>형변환 후 데이터 값</th>
+					<th>데이터 타입</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td id="val_1"><span style="color: red;">1234</span></td>
+					<td></td>
+					<td id="type_1"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_2"><span style="color: blue;">1234</span></td>
+					<td>parseInt(1234)</td>
+					<td id="type_2"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_3"><span style="color: green;">1234.567</span></td>
+					<td>parseFloat(1234.567)</td>
+					<td id="type_3"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_4"><span>1234</span></td>
+					<td>Number(1234)</td>
+					<td id="type_4"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_5"><span>1234.567</span></td>
+					<td>Number(1234.567)</td>
+					<td id="type_5"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_6" colspan="2">안녕하세요</td>
+					<td id="type_6"></td>
+				</tr>
+				
+				<tr>
+					<td id="val_7">20</td>
+					<td id="val_8">30</td>
+					<td>20+30=<span id="sum"></span>&nbsp;&nbsp;<span id="type_8"></span></td> 
+				</tr>
+				
+				<tr>
+					<td>
+						<input id="val_9" type="text" size="4" />
+					</td>
+					<td>
+						<input id="val_10" type="number" value="0" size="4" />
+					</td>
+					<td>
+						<button id="btn_10">결과보기</button>
+						<span id="type_9"></span>&nbsp;
+						<span id="type_10"></span>
+						<br>
+						<span id="result_10"></span>
+						<br>
+						<span id="result_11"></span>
+						<br>
+						<span id="result_12"></span>
+					</td> 
+				</tr>
+				
+				<tr>
+					<td colspan="2">자바스크립트에서 변수에 값을 넣지 않을 경우</td>
+					<td id="type_13"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						var person1 = {}; <br>
+						또는 <br>
+						const person1 = new Object();
+					</td>
+					<td id="type_14"></td>
+				</tr>
+				
+				<tr>
+					<td>person1.userid</td>
+					<td id="val_15"></td>
+					<td id="type_15"></td>
+				</tr>
+				
+				<tr>
+					<td>person1.passwd</td>
+					<td id="val_16"></td>
+					<td id="type_16"></td>
+				</tr>
+				
+				<tr>
+					<td>person1["mobile phone"]</td>
+					<td id="val_17"></td>
+					<td id="type_17"></td>
+				</tr>
+				
+				<tr>
+					<td>person1.name</td>
+					<td id="val_18"></td>
+					<td id="type_18"></td>
+				</tr>
+				
+				<tr>
+					<td>person1.age</td>
+					<td id="val_19"></td>
+					<td id="type_19"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						const person2 = {userid : "eomjh", pwd : 'abcd1234', 'mobile phone' : '010-3456-7788', name : "엄정화", age : 27};      
+					</td>
+					<td id="type_20"></td>
+				</tr>
+				
+				<tr>
+					<td>person2.userid</td>
+					<td id="val_21"></td>
+					<td id="type_21"></td>
+				</tr>
+				
+				<tr>
+					<td>person2.passwd</td>
+					<td id="val_22"></td>
+					<td id="type_22"></td>
+				</tr>
+				
+				<tr>
+					<td>person2["mobile phone"]</td>
+					<td id="val_23"></td>
+					<td id="type_23"></td>
+				</tr>
+				
+				<tr>
+					<td>person2.name</td>
+					<td id="val_24"></td>
+					<td id="type_24"></td>
+				</tr>
+				
+				<tr>
+					<td>person2.age</td>
+					<td id="val_25"></td>
+					<td id="type_25"></td>
+				</tr>				
+				
+				<tr>
+					<td id="val_26">40</td>
+					<td id="val_27">50</td>
+					<td>
+						func_sum(40, 50)을 호출한 결과 => <span id="result_27"></span>
+						<br>
+						변수 func_sum 의 타입은 <span id="type_27"></span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td id="val_28">60</td>
+					<td id="val_29">70</td>
+					<td>
+						func_minus(60, 70)을 호출한 결과 => 60-70=<span id="result_29"></span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td id="val_30">20</td>
+					<td id="val_31">30</td>
+					<td>
+						20*30=<span id="result_32"></span><br>
+						20*30=<span id="result_33"></span><br>
+						20*30=<span id="result_34"></span><br>
+						20*30=<span id="result_35"></span><br>
+						20*30=<span id="result_36"></span><br>
+						변수 func_multiply_4의 타입은 <span id="type_37"></span>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>	
+	</div>
+</body>
+</html>
+
+
+
+

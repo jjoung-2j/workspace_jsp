@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트에서 엘리먼트(태그, 요소)를 잡는 6가지 방법</title>
+
+<link rel="stylesheet" href="css/getElement_querySelectorAll.css" >
+<script type="text/javascript" src="js/getElement_querySelectorAll.js"></script> 
+
+</head>
+<body>
+	<div>red</div>
+	<div>green</div>
+	<div>blue</div>
+	
+	<br>
+	
+	<section>
+		<button type="button" class="btn_navy">버튼1</button>
+		<button type="button">버튼2</button>
+		<button type="button" class="btn_navy">버튼3</button>
+		<button type="button">버튼4</button>
+		<button type="button" class="btn_navy">버튼5</button>
+		<button type="button">버튼6</button>
+	</section>
+	
+	<br>
+	
+	<section>
+		<ul>
+			<li><label for="hobby1">게임</label><input id="hobby1" type="checkbox" name="hobby" value="game" /><span class="hobby_val"></span></li>
+			<li><label for="hobby2">영화감상</label><input id="hobby2" type="checkbox" name="hobby" value="movie" /><span class="hobby_val"></span></li> 
+			<li><label for="hobby3">글쓰기</label><input id="hobby3" type="checkbox" name="hobby" value="writing" /><span class="hobby_val"></span></li> 
+			<li><label for="hobby4">음악감상</label><input id="hobby4" type="checkbox" name="hobby" value="music" /><span class="hobby_val"></span></li>
+		</ul>
+		
+		<button type="button" id="btn_ok_1">체크박스확인1</button>
+		<button type="button" id="btn_ok_2">체크박스확인2</button>
+		<button type="button" onclick="func_clear()">결과지우기</button>
+		<br>
+		
+		체크박스에 체크가 되어진 값1 : <span id="result1"></span>
+		<br>
+		체크박스에 체크가 되어진 값2 : <span id="result2"></span>
+		
+	</section>
+	
+	<br>
+	
+	<section id="food">
+		<ol>
+			<li>사과</li> 
+			<li>딸기</li>
+			<li>포도</li>
+			<li>수박</li>
+		</ol>
+	    <ol>
+			<li>짜장면</li>   
+			<li>짬뽕</li> 
+			<li>탕수육</li>
+			<li>팔보채</li>
+		</ol>
+		<ol>
+			<li>국어</li>
+			<li>영어</li>
+			<li>수학</li>
+			<li>체육</li>
+		</ol>
+	</section>
+	
+	<section style="margin-bottom: 150px;">
+		<img id="food_img"/>
+	</section>
+
+</body>
+</html>

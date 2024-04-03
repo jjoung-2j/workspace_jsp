@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+div#container {
+	border: solid 0px red;
+	width: 80%;
+	margin: 0 auto;
+	padding: 2%;
+}
+
+div#container > table {
+	border: solid 0px gray;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+div#container > table th,
+div#container > table td {
+	border: solid 1px gray;
+}
+
+div#container > table th {
+	height: 50px;
+	background-color:#ffffcc;
+}
+
+div#container > table td {
+	text-align: center;
+	height: 40px;
+}
+
+
+

@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+div#container {
+	border: solid 0px gray;
+	width: 80%;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+div#calcurator {
+	border: solid 0px red;
+	padding-left: 100px;
+}
+
+div#display_error {
+	border: solid 0px blue;
+	margin-top: 50px;
+	padding-left: 100px;
+}
+
+table#tbl {
+	border: solid 0px orange;
+	width: 50%;
+	margin-top: 50px;
+	border-collapse: collapse;
+}
+
+table#tbl th, table#tbl td {
+	border: solid 1px orange;
+}
+
+table#tbl th {
+	height: 50px;
+	background-color: #ccc;
+}
+
+table#tbl td {
+	height: 40px;
+	text-align: center;
+}
+
+table#tbl td:last-child {
+	text-align: right;
+	padding-right: 10px;
+}
+
+table#tbl input[type="number"] {
+	margin-left: 20px;
+	height: 20px;
+}
+
+table#tbl > tfoot > tr > td:first-child {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+div#display_error > span {
+	color: red;
+	font-size: 16pt;
+	font-weight: bold;
+	display: none;
+}
+
+

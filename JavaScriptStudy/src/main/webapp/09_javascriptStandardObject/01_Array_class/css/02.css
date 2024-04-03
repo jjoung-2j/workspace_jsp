@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+div#container {
+	width: 60%;
+	margin: 40px auto 0 auto;
+	border: solid 0px blue;
+}
+
+hr {
+	border: solid 1px red;
+	margin: 30px 0;
+}
+
+div#container > table#tbl, 
+div#view > table,
+div#view_pass > table {
+	border: solid 0px gray;
+	width: 50%;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+div#container > table#tbl th,
+div#container > table#tbl td,
+div#view > table th,
+div#view > table td,
+div#view_pass > table th,
+div#view_pass > table td {
+	border: solid 1px gray;
+}
+
+div#container > table#tbl th, 
+div#view > table th,
+div#view_pass > table th {
+	background-color: #ccc;
+	height: 40px;
+	font-size: 14pt;
+}
+
+div#container > table#tbl td, 
+div#view > table td,
+div#view_pass > table td {
+	text-align: center;
+	height: 30px;
+}
+
+div#container > table#tbl > tbody > tr:last-child {
+	line-height: 70px;
+}
+
+div#container > table#tbl > tbody > tr:last-child > td {
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+}
+
+button.btn {
+	width: 130px;
+	height: 40px;
+	cursor: pointer;
+}
+
+
+

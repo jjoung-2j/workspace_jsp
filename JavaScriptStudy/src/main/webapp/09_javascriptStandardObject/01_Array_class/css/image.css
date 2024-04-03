@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+div#container {
+   border: solid 0px gray;
+   width: 80%;
+   margin: 4% auto;
+}
+
+div#container > table {
+	border: solid 0px red;
+	width: 50%;		/* 여기서 width 는 80%의 50%(부모의 50%) */
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+/* 완성하기 전(확인하면서 하기)
+ div#container > table th
+, div#container > table td {
+	border: solid 1px orange;
+} 
+*/
+div#container > table th{
+	border: solid 1px orange;
+}
+
+div#container > table th{
+	height: 40px;
+	font-size: 14pt;
+}
+
+div#container > table td{
+	text-align: center;
+	height: 200px;
+}
+
+div#container > table td > img{
+	border: solid 0px red;
+	/* border-radius 는 테두리를 둥글게 만드는 속성이다. */
+	/* border-radius: 20px 20px 20px 20px / 20px 20px 20px 20px; */ /* 시계방향 */
+	/* border-radius: top-left-x top-right-x bottom-right-x bottom-left-x / top-left-y top-right-y bottom-right-y bottom-left-y */
+	/* border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;  절반씩 깍는다. */
+	/* 또는 아래처럼 같은 것이다. */
+	border-radius: 50%;
+	opacity: 0.2;
+	/* 광도  0.0 ~ 1.0  숫자가 적을수록 희미해진다.  0.0 은 투명, 1.0 은 원래 광도이다. */
+}
+
