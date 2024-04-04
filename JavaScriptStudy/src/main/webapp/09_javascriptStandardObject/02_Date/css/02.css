@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+	div#timer , div#timerclear {
+	/* 	border: solid 1px gray; */
+		padding: 30px 0 0 20px;
+		color: blue;
+		font-size: 20pt;
+	} 

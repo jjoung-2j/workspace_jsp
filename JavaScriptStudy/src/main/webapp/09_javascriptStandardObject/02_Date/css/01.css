@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+	div#container {
+		/* border: solid 1px gray; */
+		width: 90%;
+		margin: 0 auto;
+		padding: 2%;
+	}
+	
+	table {
+		border: solid 1px gray;
+		width: 50%;
+		border-collapse: collapse;
+	}
+	
+	td {
+		border: solid 1px gray;
+		height: 50px;
+		text-align: center;
+		font-size: 14pt;
+	}
+	
+	td#current_date_1 { 
+		color: red;
+	}
+	
+	td#current_date_2 {
+		color: blue;
+	}

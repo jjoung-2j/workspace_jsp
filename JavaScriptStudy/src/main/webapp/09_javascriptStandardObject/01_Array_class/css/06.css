@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+   div#container {
+	   	/* border: solid 1px gray; */
+	   	width: 80%;
+	   	margin: 30px auto;
+   }
+   
+   select {
+   	    height: 30px;
+   }
+   
+   div#person {
+   	    /* border: solid 1px blue;  */
+   	    display: flex;
+   	    margin-top: 2%; 
+   }
+   
+   img#img {
+   	    display: block;
+   	    border-radius: 50%;
+   }
+   
+   div#information {
+   	 /* border: solid 1px red;  */
+   	    width: 40%; 
+   }
+   
+   ul {
+   		list-style-type: none;
+   		padding-left: 2%;
+   }
+   
+   li {
+   		line-height: 25px; 
+   }
+   
+   label {
+   		/* border: solid 1px red; */
+   		display: inline-block;
+   		width: 15%;
+        font-weight: bold;
+        color: blue; 
+   }
