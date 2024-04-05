@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>슬라이드</title>
+
+<link rel="stylesheet" href="css/slide.css">
+<script type="text/javascript" src="js/slide.js"></script>
+
+</head>
+<body>
+
+	<div id="container">
+      	<h2 style="text-align: center;">사진을 슬라이드로 보기</h2>
+	
+	  	<div style="display: flex;">
+			<!-- 버튼이 가운데 오게 하기 / 그 중 이미지와 가깝게 하기 위해 margin-right:1% 주기 -->
+		  	<div style="margin: auto 1% auto auto;">	
+		    	<button id="previous">◀</button>
+		  	</div>
+		  
+		  	<!-- div를 두개로 감싼이유는 img들을 좌우배치하고 배치된 사진중 한장만 보이게 하기 위함이다.-->
+	      	<div id="slide">     <!-- 배치된 img들을 한개의 img만 보이게 가리기 위한 용도로 사용되는 태그임-->
+	        	<div id="images">  <!-- img들을 좌우배치할 태그로서 display 는 flex 로 함 -->
+					<img src="images/Koala.jpg" />
+					<img src="images/Lighthouse.jpg" />
+					<img src="images/Penguins.jpg" />
+					<img src="images/Tulips.jpg" />
+	        	</div>
+	      	</div>
+	      
+	      	<div style="margin: auto auto auto 1%;">
+	         	<button id="next">▶</button>
+	      	</div>
+      	</div>
+      
+      	<h2 id="msg" style="text-align: center; color: red;"></h2>
+      
+    </div>
+
+</body>
+</html>
