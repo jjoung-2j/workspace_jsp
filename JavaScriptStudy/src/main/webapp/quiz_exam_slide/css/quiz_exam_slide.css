@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+div#start{
+   border: solid 0px red;
+   width: 40%;
+   margin: auto;
+   margin-top: 200px;
+   min-width: 500px;
+}
+
+div#start > div {
+   border: solid 0px red;
+   text-align: center;
+   font-size: 50pt;
+   font-weight: bold;
+}
+
+div#start > button#start{
+   border: solid 0px blue;
+   border-radius: 0%;
+   width: 200px;
+   margin-left : 150px;
+}
+
+/* ======================================= */
+
+div#container {
+   border: solid 5px #000033; 
+   width: 70%; 
+   margin: 0 auto; /**중앙 정렬한다.**/
+   min-width: 1000px;
+   display: none;
+}
+
+/* ======================================== */
+div#header{
+   border-bottom: solid 3px navy;
+   display: flex;
+   padding: auto;
+}
+
+div#header > h2{
+   margin-left: 40%;
+   text-align: center;
+   font-size: 30pt;
+   vertical-align: middle;
+}
+
+/* 타이머 디자인 */
+div#timer {
+   border: solid 0px gray; 
+   width: 30%;
+   height: 50px;
+   color: blue;
+   font-size: 30pt;
+   text-align: right;
+   margin-top: 5%;
+
+} 
+/* ======================================== */
+/* ======================================== */
+
+ div#slide {     
+    border: solid 3px #000099;
+    width: 800px;     
+    height: 300px;    
+    overflow: hidden; 
+    padding: 0;   /* 기본값이 0이아니다. */
+    margin-top: 5%;
+    border-radius: 30px;
+ }
+
+div#slide > div#quiz_display {
+   border: solid 0px red;
+   display: flex;  
+   width: 3600px ;  /* 900px 의 4가지 문제이니 4배를 해주어야 한다 */
+   height: 300px;  
+   transition: transform 1s;  
+   padding: 0;    /* 기본값이 0이아니다. */
+}
+ 
+div#slide >div#quiz_display > div#image{
+   border: solid 0px green;
+   margin: 0;
+   width: 800px;
+   
+}
+
+div#quiz_display > div#image > p{
+   border: solid 0px blue;
+   font-size: 20pt;
+   text-align: center;
+   font-weight: bold;
+}
+
+
+div#quiz_display > div#image > div#q4{
+   border: solid 0px red;
+   display: flex;
+}
+
+div#q4> img, ol#ol{
+   border: solid 0px red;
+   width: 20%;
+   margin: auto;
+
+}
+
+ol.ol{
+   padding-left: 350px;
+}
+
+div#quiz_display > div#image > div.ox{
+   font-weight: bold;
+   padding-left: 500px;
+}
+
+/* ============================================== */
+
+/* 버튼디자인 */
+button {
+   width: 50px; 
+   height: 50px;
+   background-color: #646464;
+   color: white;
+   font-size: 20pt;
+   border-radius: 50%;
+}
+
+button:active { /* 버튼을 클릭하는 동안 색을 바꾼다. */
+   background-color:#3e3e3e;
+}
+
+button:disabled { /* 버튼 속성이 disabled되면 색을 바꾼다. */
+   background-color: white;   /* 있는데 없는척 */  
+   border: none;
+}
+
+button:disabled~span#warning{    /* ~ 자식들을 나타날때도 사용하지만 만약(if)라는 뜻도 가지고 있다 */
+   display: none;
+}
+
+span#warning {
+   border: solid 0px red;
+   margin-left: 10px;
+   padding: 5px 10px;
+   font-size: 10pt;
+   font-weight: bold;
+}
+
+button#submit{
+   width: 15%;
+   height: 35px;
+   font-size: 15pt;
+   border-radius: 0%;
+   border: solid 0px red;
+   margin: 2% 45% ;
+}
+
+/* ===================================================== */
+
+div#image label.li_list{
+   border : solid 0px red;
+   display: inline-block;
+   width: 70px;
+   
+}
+
+div#image label.li_list_q4{
+   border : solid 0px red;
+   display: inline-block;
+   width: 120px;
+   
+}
+
+div#score > span {
+   margin-left: 10%;
+}
+
+  
