@@ -151,7 +151,7 @@ window.onload = function(){
     // 또는
     const person1 = {};   // 자바스크립트에서 말하는 빈 객체이다.
 
-    // person1.userid; // undefinede 가 나온다.
+    // person1.userid; // undefined 가 나온다.
     person1.userid = "leess";   
     // 객체에 새 속성을 추가하는 방법은 .표기법이 있다. 즉, 객체명.속성명 = 값; 으로 한다.
     person1.passwd = 'qwer1234$';
