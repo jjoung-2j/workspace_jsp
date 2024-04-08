@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+ div#container {
+    border: solid 0px green; 
+    width: 70%; 
+    margin: 5% auto; /**중앙 정렬한다.**/
+ }
+
+
+ div#slide {     
+    border: solid 0px blue;
+    width: 900px;     /* 이미지보다 크면 다음 이미지까지 표시되므로 slide 크기를 img 크기와 동일하게 설정해야 한다. */
+    /* width: 1200px; 을 해보면 이해가 갈 것이다. */
+    height: 300px;    /* 이미지보다 크면 다음 이미지까지 표시되므로 slide 크기를 img 크기와 동일하게 설정해야 한다. */
+    overflow: hidden; /* overflow: hidden을 사용하여 width: 900px; 을 넘어서 보여지는 사진들을 안보이도록 만든다. */
+ }
+
+ div#images {
+    border: solid 0px red;
+    display: flex;  /* 좌우 슬라이드를 위해 flex로 사진을 가로정렬한다. */
+    height: 300px;  /* 이미지들의 height 는 화면상에 보여지는 장소인 위의 slide와 height 와 동일하게 설정한다. */
+    transition: transform 1s;  /* 요소(엘리먼트)를 transform(변형) 시키는데 걸리는 시간(단위는 초) 0.5초 */
+/*  transform: translateX(900px); */  /* transform 은 요소(엘리먼트)를 변형시키는 것이다.
+                                       요소를 회전(rotate), 확대 또는 축소(scale), 기울이기(skew), 이동(translate) 효과를 부여할 수 있다. 
+                                       이를 통해 CSS 시각적 서식 모델의 좌표 공간을 변경한다.
+                                       transform 이 지원되는 웹브라우저는 IE는 버전 10 이상부터 지원한다. */
+ }
+
+ div#images > img {
+    width: 900px;  /* div#slide 크기와 동일하게 설정한다. */
+    height: 300px; /* div#slide 크기와 동일하게 설정한다. */
+ }
+
+ 
+ /* 버튼디자인 */
+ button {
+   width: 50px; 
+   height: 50px;
+   background-color: #646464;
+   color: white;
+   font-size: 20pt;
+   border-radius: 50%;
+ }
+
+ button:active { /* 버튼을 클릭하는 동안 색을 바꾼다. */
+   background-color:#3e3e3e;
+ }
+
+ button:disabled { /* 버튼 속성이 disabled되면 색을 바꾼다. */
+   background-color: #cbcaca;
+ }

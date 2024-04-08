@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+div#container {
+    border: solid 0px green; 
+    width: 70%; 
+    height: 700px;
+    margin: 5% auto; /**중앙 정렬한다.**/
+}
+
+
+div#questiones {
+  border: solid 0px red;
+  width: 900px;
+  height: 450px;
+  
+  overflow: hidden;  
+}
+
+div#questiones > div {
+   width: 94.5%;  /* div#slide 크기와 동일하게 설정한다. */
+   height: 448px; /* div#slide 크기와 동일하게 설정한다. */
+   border: solid 1px gray;
+   
+   background-color: #ffffcc;
+   padding-left: 5%;
+   font-size: 16pt;
+}
+
+
+/* 버튼디자인 */
+button.prev_next {
+  width: 50px; 
+  height: 50px;
+  background-color: #646464;
+  color: white;
+  font-size: 20pt;
+  border-radius: 50%;
+}
+
+button.prev_next:active { /* 버튼을 클릭하는 동안 색을 바꾼다. */
+  background-color:#3e3e3e;
+}
+
+button.prev_next:disabled { /* 버튼 속성이 disabled되면 색을 바꾼다. */
+  background-color: #cbcaca;
+}
+
+/* ------------------------------------------------------------ */
+
+	div#quiz_display {
+		margin-top: 30px;
+		padding-left: 20px; 
+	}
+	
+	li {
+		line-height: 30px;
+	}
+	
+	div.ox { 
+		font-size: 14pt;
+		font-weight: bold;
+		padding-bottom: 20px;
+		margin-top: -10px;
+	}
+	
+	button#btnSubmit {
+	    border: solid 1px tomato; 
+	    color: tomato; 
+	    padding: 5px; 
+	    border-radius: 5px;
+	    font-size: 14pt;
+	}
+	
+	button#btnSubmit:hover {
+		cursor: pointer;
+		background-color: yellow;
+	}
+		
+	span#warning {
+		border: solid 1px red;
+		margin-left: 10px;
+		padding: 5px 10px;
+		font-size: 14pt;
+		font-weight: bold;
+	}
+	
+	div#score {
+		border: solid 0px green;		
+		margin: 3% 0 5% 0;
+	}
+	
+	div#score > table {
+		width: 70%;
+		margin: 0 auto;
+		border-collapse: collapse;
+	}
+	
+	div#score > table th, 
+	div#score > table td {
+		border: solid 1px gray;
+	}
+	
+	div#score > table td {
+		text-align: center;
+	}
+

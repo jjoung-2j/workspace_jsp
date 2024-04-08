@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숨겼다가 보여주는 슬라이드</title>
+
+<link rel="stylesheet" href="css/slide_hide_show.css">
+<script type="text/javascript" src="js/slide_hide_show.js"></script>
+
+</head>
+<body>
+
+	<div id="container">
+      	<h2 style="text-align: center;">사진을 숨겼다가 보여주는 슬라이드</h2>
+	
+	  	<div style="display: flex;">
+			<!-- 버튼이 가운데 오게 하기 / 그 중 이미지와 가깝게 하기 위해 margin-right:1% 주기 -->
+		  	<div style="margin: auto 1% auto auto;">	
+		    	<button id="previous">◀</button>
+			</div>	      	
+			<div id="images"> 	<!-- 사진들을 배치할 태그이다 -->
+				<img src="images/Koala.jpg" />			<!-- img들을 상하로 배치해야 하므로 display 는 block 으로 함 -->
+				<img src="images/Lighthouse.jpg" />		<!-- img들을 상하로 배치해야 하므로 display 는 block 으로 함 -->
+				<img src="images/Penguins.jpg" />		<!-- img들을 상하로 배치해야 하므로 display 는 block 으로 함 -->
+				<img src="images/Tulips.jpg" />			<!-- img들을 상하로 배치해야 하므로 display 는 block 으로 함 -->
+			</div>
+	      	<div style="margin: auto auto auto 1%;">
+	         	<button id="next">▶</button>
+	      	</div>
+      	</div>
+      
+      	<h2 id="msg" style="text-align: center; color: red;"></h2>
+      
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+ div#container {
+    border: solid 0px green; 
+    width: 70%; 
+    margin: 5% auto; /**중앙 정렬한다.**/
+ }
+
+ div#images {
+    border: solid 0px red;
+    width: 900px;   /* 화면상에 보여지는 장소이므로 width 는 img 태그의 width 와 동일하게 설정한다. */
+    height: 300px;  /* 화면상에 보여지는 장소이므로 height 는 img 태그의 height 와 동일하게 설정한다. */
+    /*overflow: hidden; /* overflow: hidden을 사용하여 width: 900px; 과 height: 300px; 을 넘어서 보여지는 사진들을 안보이도록 만든다. */
+  }
+
+ div#images > img {
+      display: block;   /* img들을 상하로 배치해야 하므로 display 는 block 으로 함 */
+      width: 900px;  /* div#slide 크기와 동일하게 설정한다. */
+      height: 300px; /* div#slide 크기와 동일하게 설정한다. */
+ }
+
+ 
+ /* 버튼디자인 */
+ button {
+   width: 50px; 
+   height: 50px;
+   background-color: #646464;
+   color: white;
+   font-size: 20pt;
+   border-radius: 50%;
+ }
+
+ button:active { /* 버튼을 클릭하는 동안 색을 바꾼다. */
+   background-color:#3e3e3e;
+ }
+
+ button:disabled { /* 버튼 속성이 disabled되면 색을 바꾼다. */
+   background-color: #cbcaca;
+ }

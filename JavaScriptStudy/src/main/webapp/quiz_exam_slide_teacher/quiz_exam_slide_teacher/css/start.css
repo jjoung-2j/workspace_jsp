@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+div#container {
+    border: solid 0px green; 
+    width: 70%; 
+    height: 550px;
+    margin: 5% auto; /**중앙 정렬한다.**/
+}
+
+/* ------ 초기화면 설정 시작 ------ */
+div#container > div {
+    display: flex;
+    border: solid 0px gray;
+    height: 450px;
+}
+
+div#container > div > div {
+    margin: auto;
+}
+
+div#container > div > div > button {
+    width: 250px;
+    height: 150px;
+    font-size: 26pt;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+div#container > div > div > button:hover {
+    background-color: bisque;
+}
+/* ------ 초기화면 설정 끝 ------ */

@@ -21,6 +21,7 @@ window.onload = function(){
             // 또는
         //  btnSubmit.setAttribute('disabled',true);        // "제출하기" 버튼 비활성화
         //  btnSubmit.setAttribute('disabled',false);       // "제출하기" 버튼 비활성화
+        //  btnSubmit.removeAttribute('disabled' )          // "제출하기" 버튼 활성화
 
             check();    // 채점하는 함수 호출
         
@@ -167,7 +168,7 @@ window.onload = function(){
     //  btnSubmit.setAttribute('disabled',true);        // "제출하기" 버튼 비활성화
         // 또는
     //  btnSubmit.setAttribute('disabled',false);       // "제출하기" 버튼 비활성화
-
+    //  btnSubmit.removeAttribute('disabled' )          // "제출하기" 버튼 활성화
         check();    // 채점하는 함수 호출
 
     }

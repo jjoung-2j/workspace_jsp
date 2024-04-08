@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열을 유효한 URI(Uniform Resource Identifier UTF-8로 인코딩)로 인코딩/디코딩 한다.</title>
+
+<link rel="stylesheet" href="css/encodeURI_decodeURI.css">
+<script type="text/javascript" src="js/encodeURI_decodeURI.js"></script>
+
+</head>
+<body>
+
+    <div>
+		<table>
+			<tr>
+				<td width="30%">문자열입력(한글)</td>
+				<td><input type="text" id="inputText" size="70"/> </td>
+			</tr>
+			<tr>
+				<td>URI로 인코딩된 값</td>
+				<td id="encode_1"></td>
+			</tr>
+			<tr>
+				<td>URI를 디코딩된 값</td>
+				<td id="decode_1"></td>
+			</tr>
+			
+			<tr>
+				<td><button type="button" id="btnOK_1">변경</button></td>
+				<td><button type="button" id="btnReset_1">다시</button></td>
+			</tr>
+		</table>
+	</div>
+	
+	<div>	
+		<table>
+			<tr>
+				<td width="30%">URI로 인코딩된 값 입력</td>
+				<td><input type="text" id="encode_2" size="70"/> </td>
+			</tr>
+			<tr>
+				<td>URI를 디코딩된 값</td>
+				<td id="decode_2"></td>
+			</tr>
+			
+			<tr>
+				<td><button type="button" id="btnOK_2">변경</button></td>
+				<td><button type="button" id="btnReset_2">다시</button></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

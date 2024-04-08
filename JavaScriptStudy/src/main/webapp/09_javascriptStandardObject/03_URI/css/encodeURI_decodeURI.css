@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+	div {
+	   /* border: solid 1px gray; */
+		width: 800px;
+		margin: 0 auto;
+		padding: 2%;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	
+	td {
+		border: solid 1px gray;
+		height: 50px;
+		text-align: center; 
+	}
