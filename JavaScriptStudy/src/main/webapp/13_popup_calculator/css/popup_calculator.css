@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+div#container {
+	border: solid 0px red;
+	display: flex;
+	width: 80%;
+ /*	height: 700px; */
+	margin: 20px auto;
+}
+
+div#container > div#view {
+	border: solid 0px blue;
+	width: 80%;
+	margin: auto;
+}
+
+div#container > div#view > table#tbl {
+	border: solid 0px gray;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+div#container > div#view > table#tbl th, 
+div#container > div#view > table#tbl td {
+	border: solid 1px gray;
+}
+
+div#container > div#view > table#tbl th {
+	padding: 1%;
+}
+
+div#container > div#view > table#tbl td {
+	padding: 2%;
+}
+
+div#container > div#view > table#tbl > thead > tr:first-child > th { 
+	line-height: 250%;
+	color: tomato;
+	font-size: 20pt;
+	border: none;
+}
+
+div#container > div#view > table#tbl > tbody > tr > td:first-child > img {  
+	width: 30%;
+	cursor: pointer;
+}
+
+div#container > div#view > table#tbl > tbody > tr > td:nth-child(2) > ul {  
+	list-style-type: none;
+}
+
+div#container > div#view > table#tbl > tbody > tr > td:nth-child(2) > ul > li {
+	line-height: 150%;
+}
+
+div#container > div#view > table#tbl > tbody > tr > td:nth-child(2) > ul > li > label {  
+    border: solid 0px red;
+    display: inline-block;
+    width: 80px;
+    margin-right: 5px;
+}
+
+div#container > div#view > table#tbl > tfoot > tr > td:first-child { 
+	text-align: center;
+	font-size: 16pt;
+}
+
+div#container > div#view > table#tbl > tbody > tr > td:last-child {
+	color: blue;
+	font-size: 12pt;
+	text-align: right;
+}
+
+div#container > div#view > table#tbl > tfoot > tr > td:last-child { 
+	color: red;
+	font-size: 12pt;
+	text-align: right;
+}
+
