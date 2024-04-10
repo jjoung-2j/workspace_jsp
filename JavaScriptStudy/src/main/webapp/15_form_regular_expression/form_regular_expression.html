@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 정규표현식을 사용한 폼 유효성 검사</title>
+
+<link rel="stylesheet" href="css/form_regular_expression.css">
+
+<script type="text/javascript" src="../util/myutil.js"></script> 
+<script type="text/javascript" src="js/form_regular_expression.js"></script>
+
+</head>
+<body>
+
+   <div id="container">
+      
+      <form name="register_form">
+      <!-- 
+         == !!! 중요 !!! ==
+         파일첨부가 있을 경우에는
+         form name="register_form" 만 해주면 파일은 절대로 전송이 안되어진다.
+         form name="registerFrm" enctype="multipart/form-data" 로 해주어야만 파일이 전송 되어진다. 
+      -->
+         <fieldset>
+            <legend>회원가입정보</legend>
+            
+            <ul>
+               <li>
+                  <label class="title" for="userid">아이디</label>
+                  <input class="myinput" name="userid" id="userid" type="text" size="20" maxlength="20" autocomplete="off"  autofocus />
+                  <span class="errmsg" id="err_userid"></span> 
+               </li>
+               
+               <li>
+                  <label class="title" for="passwd1">암호</label>
+                  <input class="myinput" name="passwd" id="passwd1" type="password" size="20" maxlength="20" />
+                  <span class="errmsg" id="err_passwd"></span>  
+               </li>
+               
+               <li>
+                  <label class="title" for="passwd2">암호확인</label>
+                  <input class="myinput" id="passwd2" type="password" size="20" maxlength="20" />
+                  <span class="errmsg" id="err_passwd2"></span>  
+               </li>
+               
+               <li>
+                  <label class="title" for="name">성명</label>
+                  <input class="myinput" name="name" id="name" type="text" size="20" maxlength="20" autocomplete="off" />
+                  <span class="errmsg" id="err_name"></span>  
+               </li>
+               
+               <li>
+                  <label class="title" for="email">이메일</label>
+                  <input class="myinput" name="email" id="email" type="email" size="40" maxlength="40" placeholder="예: hongkd@gmail.com" />
+                  <span class="errmsg" id="err_email"></span>   
+               </li>
+               
+               <li>
+                  <label class="title">성별</label>
+                  
+                  <label for="male">남자</label>
+                  <input id="male" type="radio" name="gender" value="male" />
+                  
+                  <label for="female">여자</label>
+            <!--   <input id="female" type="radio" name="gender" value="female" checked />  -->
+                  <input id="female" type="radio" name="gender" value="female" />
+                  <span class="errmsg" id="err_gender"></span> 
+                  
+               </li>
+               
+               <li>
+                  <label class="title">취미</label>
+                  
+                  <label for="game">게임</label><input type="checkbox" id="game" name="hobby" value="game" />
+               <!--
+                  <label for="movie">영화감상</label><input type="checkbox" id="movie" name="hobby" value="movie" checked />
+               -->    
+                  <label for="movie">영화감상</label><input type="checkbox" id="movie" name="hobby" value="movie" />
+                  <label for="writing">글쓰기</label><input type="checkbox" id="writing" name="hobby" value="writing" />
+               <!--      
+                  <label for="music">음악감상</label><input type="checkbox" id="music" name="hobby" value="music" checked />
+                -->       
+                  <label for="music">음악감상</label><input type="checkbox" id="music" name="hobby" value="music" /> 
+                  <span class="errmsg" id="err_hobby"></span> 
+               </li>
+               
+               <li>
+                  <label class="title">생년월일</label>
+                  <select class="myselect birthSelect" name="birthYear" id="birthYear"></select>
+                  <select class="myselect birthSelect" name="birthMonth" id="birthMonth"></select>
+                  <select class="myselect" name="birthDate" id="birthDate" onchange="go_birthDate(this)"></select>
+                  <span class="errmsg" id="err_birthday"></span>
+               </li>
+               
+               <li>
+                  <label class="title">만나이</label>
+                  <span id="age" style="font-size: 12pt; color: red;"></span>세
+               </li>
+               
+               <li>
+                  <label class="title">최종학력</label>
+                  <select class="myselect" name="school">
+                     <option>선택하세요</option>
+                     <option>고졸</option>
+                     <option>초대졸</option>
+                     <option>대졸</option>
+                     <option>대학원졸</option>
+                  </select>
+                  <span class="errmsg" id="err_school"></span> 
+               </li>
+               
+               <li>
+                  <label class="title">선호음식</label>
+                  <select size="3" multiple name="food">
+                     <option>짜장면</option>
+                     <option>파스타</option>
+                     <option>파타이</option>
+                     <option>부대찌개</option>
+                     <option>떡볶이</option>
+                     <option>치킨</option>
+                     <option>피자</option>
+                  </select>
+               </li>
+               
+               <li>
+                  <label class="title">선호프로그램</label>
+                  <select class="myselect" name="program">
+                     <optgroup label="데이터베이스">
+                        <option>Oracle</option>
+                        <option>MSSQL</option>
+                        <option>SyBase</option>
+                     </optgroup>
+                     
+                     <optgroup label="개발언어">
+                        <option>Java</option>
+                        <option>JSP</option>
+                        <option>Spring</option>
+                        <option>C/C++</option>
+                     </optgroup>
+                  </select class="myselect">
+               </li>
+               
+               <li>
+                  <label class="title" for="browsername">웹브라우저</label>
+                  <input id="browsername" list="browserType" name="webbrowser"/>
+                  <datalist id="browserType">
+                     <option value="Chrome" />
+                     <option value="MS Edge" />
+                     <option value="Firefox" />
+                     <option value="Opera" />
+                     <option value="Safari" />
+                  </datalist>
+               </li>
+               
+               <li>
+                  <label class="title" for="addfile">파일첨부</label>
+                  <input id="addfile" type="file" name="addfile" /> 
+               </li>
+               
+               <li>
+                  <label class="title" for="registerComment">가입인사말</label>
+                  <textarea name="registerComment" id="registerComment" rows="5" cols="30"></textarea>
+                  <span class="errmsg" id="err_registerComment"></span>  
+               </li>
+               
+               <li>
+                  <input type="button" value="전송(button)" />
+                  <input type="submit" value="전송(submit)" />
+                  <input type="reset" value="취소(reset)" />
+               </li>
+               
+            </ul>
+         </fieldset>
+      </form>
+      
+   </div>
+
+</body>
+</html>
