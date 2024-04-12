@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body > div:first-child {
+	border: solid 0px gray;
+	margin: 50px 0 20px 0;
+	height: 100px;
+	display: flex;
+}
+
+body > div:first-child > div,
+body > div:nth-child(2) > div {
+	margin: auto;
+}
+
+body > div:first-child > div > button#btn {
+	width: 100px;
+	height: 40px;
+	border-radius: 50%;
+	border: none;
+	background-color: navy;
+	color: white;
+}
+
+
+body > div:nth-child(2) {
+	border: solid 0px gray;
+	height: 200px;
+	display: flex;
+}
+
+
+
+
+
+
+

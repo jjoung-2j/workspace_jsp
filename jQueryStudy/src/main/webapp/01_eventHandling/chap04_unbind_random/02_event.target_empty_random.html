@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onkeydown="return keydowncheck(event)"> 
+<!-- 
+     === >>> 소스보기 금지 <<< === 
+	 oncontextmenu="return false" : 마우스 우클릭 금지
+     ondragstart="return false"   : 드래그 금지
+     onselectstart="return false" : 선택복사 금지
+ -->
+<head>
+<meta charset="UTF-8">
+<title>event.target , empty , random 에 대해서 알아봅니다.</title>
+
+<link rel="stylesheet" href="css/02.css">
+
+<script type="text/javascript" src="../../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../util/myutil.js"></script> 
+<script type="text/javascript" src="js/02.js"></script>
+
+</head>
+<body>
+	<h2>행운의 숫자를 클릭하세요~~(오로지 기회는 1번만!!)</h2>
+	<div id="firstdiv">
+		<span class="buttons">1</span>
+		<span class="buttons">2</span>
+		<span class="buttons">3</span>
+		<span class="buttons">4</span>
+		<span class="buttons">5</span>
+	</div>
+	<div id="result">다음기회에...</div>	
+</body>
+</html>
+
+

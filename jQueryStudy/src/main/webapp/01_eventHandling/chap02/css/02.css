@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+div#firstDiv, div#result {
+	border: solid 0px gray;
+	
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+div#result {
+	margin-top: 20px;
+	font-size: 16pt;
+	width: 15%;
+}
+
+div#firstDiv > span.buttons {
+	display: inline-block;
+	border: solid 2px orange;
+	width: 100px;
+	margin: 20px;
+	padding: 5px;
+	background-color: yellow;
+	color: #ff0000;
+	font-size: 15pt;
+	cursor: pointer;
+}
+
+div#result > ol {
+	border: solid 0px gray;
+	padding-left: 70px;
+}
+
+div#result > ol > li {
+	border: solid 0px red;
+	line-height: 50px;
+	text-align: left;
+}
+
+
+
+
+
+

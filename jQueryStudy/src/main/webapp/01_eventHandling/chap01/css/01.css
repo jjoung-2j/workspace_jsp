@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+span#test {
+	color: red;
+}
+
+span.example {
+	color: blue;
+}

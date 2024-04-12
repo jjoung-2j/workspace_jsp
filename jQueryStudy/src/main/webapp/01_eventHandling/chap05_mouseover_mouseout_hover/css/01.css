@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+div#container {
+ /* border: solid 1px gray; */ 
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+div#container > div#firstdiv > span.buttons {
+	display: inline-block;
+	width: 100px;
+	border: solid 2px orange;
+	margin: 20px;
+	padding: 5px;
+	background-color: yellow;
+	color: #ff0000;
+	font-size: 15pt;
+	cursor: pointer;
+}
+
+div#container > div#seconddiv > div#face > img {
+	width: 119px;
+	height: 149px;
+	border-radius: 50%;
+}
+
+div#container > div#seconddiv > div:nth-child(2) {
+	border: solid 0px blue;
+	display: flex;
+}
+
+div#container > div#seconddiv > div:nth-child(2) > div#comment {
+	border: solid 0px red;
+	text-align: left;
+	width: 250px;
+	margin-top: 10px;
+	margin: 0 auto;
+}
+
+div#container > div#seconddiv > div:nth-child(2) > div#comment > ol > li {
+	line-height: 200%;
+}
+
+div#container > div#seconddiv > div:nth-child(2) > div#comment > ol > li > span {
+	border: solid 0px gray;
+	display: inline-block;
+	width: 60px;
+}
+
+

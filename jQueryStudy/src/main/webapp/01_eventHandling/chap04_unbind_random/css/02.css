@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+	div#firstdiv, div#result {
+		/* border: solid 1px gray;  */
+		width: 80%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	div#result {
+		margin: 20px 0 0 0;
+		padding-left: 100px;
+		font-size: 16pt;
+	}
+	
+
+	div#firstdiv > span.buttons {
+		display: inline-block;
+		border: solid 2px orange;
+		width: 100px;
+		margin: 20px;
+		padding: 5px;
+		background-color: yellow;
+		color: #ff0000;
+		font-size: 15pt;
+		cursor: pointer;
+	}	

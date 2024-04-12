@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onkeydown="return keydowncheck(event)"> 
+<!-- 
+     === >>> 소스보기 금지 <<< === 
+	 oncontextmenu="return false" : 마우스 우클릭 금지
+     ondragstart="return false"   : 드래그 금지
+     onselectstart="return false" : 선택복사 금지
+ -->
+<head>
+<meta charset="UTF-8">
+<title>4지 선다 문제만들기 - 반복문으로 사용되는 each(); 에 대해서 알아봅니다.</title>
+
+<link rel="stylesheet" href="css/05.css">
+
+<script type="text/javascript" src="../../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../util/myutil.js"></script> 
+<script type="text/javascript" src="js/05.js"></script> 
+
+</head>
+<body>
+	[문제] 다음 중 8+5*3 은 얼마입니까?<br>
+	<ol>
+		<li><label for="answer1">20</label><input type="checkbox" name="answer" id="answer1" value="20" /></li> 
+		<li><label for="answer2">30</label><input type="checkbox" name="answer" id="answer2" value="30" /></li>
+		<li><label for="answer3">23</label><input type="checkbox" name="answer" id="answer3" value="23" /></li>
+		<li><label for="answer4">45</label><input type="checkbox" name="answer" id="answer4" value="45" /></li>
+	</ol>
+	<br><br>
+    <button type="button" id="btnOK">정답확인</button>	
+    <button type="button" id="btnRestart">다시시작</button>
+
+	<div class="answerCheck ok"><img src="images/ok.png" /></div>
+	<div class="answerCheck no"><img src="images/no.png" /></div>
+</body>
+</html>
