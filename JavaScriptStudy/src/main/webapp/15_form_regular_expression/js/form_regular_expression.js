@@ -120,8 +120,8 @@ window.onload = function(){
                     && !checkValidDate(birthday)){
                 */
                // 또는
-                if(!checkValidDate(birthday) && (birthSelect_list.length == 3)
-                    && isNaN(birthSelect.value)){
+                if(!checkValidDate(birthday) 
+&& isNaN(birthSelect.value)){
                     alert("달력상에 존재하지 않는 날짜를 선택하셨습니다.");
                     document.querySelector("span#age").innerHTML = "";
                 }
