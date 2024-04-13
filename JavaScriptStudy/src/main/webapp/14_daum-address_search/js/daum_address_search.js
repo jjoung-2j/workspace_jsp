@@ -46,11 +46,9 @@ window.onload = function(){
                 let is_check_all = true;
                 for(let checkbox_usa of checkbox_usa_list){
 
-                    if(!checkbox_usa.checked){
+                    if(!checkbox_usa.checked){  // 다른 체크박스의 체크여부 파악
                         is_check_all = false;
                         break;
-
-
                     }
 
                 }   // end of for~of-------------

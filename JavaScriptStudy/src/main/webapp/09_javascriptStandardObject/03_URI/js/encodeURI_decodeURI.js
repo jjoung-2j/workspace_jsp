@@ -1,8 +1,4 @@
-/**
- * 
- */
-
- window.onload = function(){
+window.onload = function(){
 	 
 	 document.querySelector("input#inputText").focus();
 	 

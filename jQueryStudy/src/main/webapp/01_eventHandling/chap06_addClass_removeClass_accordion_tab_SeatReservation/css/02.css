@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+div#container {
+	/* border: solid 1px gray; */
+	
+	width: 90%;
+	margin: 0 auto;
+	padding: 2%;
+}
+
+div#container > div#btnsDiv > span {
+	font-size: 20pt;
+	background-color: navy;
+	color: white;
+	margin-right: 60px;
+}
+
+div#container > div#btnsDiv > button {
+	font-size: 20pt;
+	width: 100px;
+	height: 50px;
+	margin-right: 20px;
+}
+
+
+div#container > div:nth-child(2) {
+	display: flex;
+}
+
+div#container > div:nth-child(2) > div {
+	border: solid 0px gray;
+	margin: 20px 20px 0 0;
+}
+
+div#container > div:nth-child(2) > div#hangulDiv {
+	font-size: 60pt;
+	margin-top: auto;
+}
+
+
+
+

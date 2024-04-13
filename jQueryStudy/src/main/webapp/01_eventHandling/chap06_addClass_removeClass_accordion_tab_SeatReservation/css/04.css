@@ -1,0 +1,47 @@
+    body {
+      font-family: Arial;
+    }
+
+    div#container {
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+   
+    div#container > div#tab {
+    /*   border: solid 1px red; */
+      
+      border: solid 1px #ccc;
+      background-color: #f1f1f1; 
+      overflow: hidden;
+    }
+   
+    div#tab > button {
+      width: 100px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px; 
+      font-size: 17px;
+      float: left;    
+      /* 기본값 : left      / right 인 경우 1번이 맨 오른쪽으로 가서 왼쪽으로 점점쌓인다.
+      /* 버튼과 버튼사이의 여백없이 계속해서 붙여가면서 하려고 하는 것임 */
+   }
+   
+    /*   확인용 ?
+    div#tab > button:hover {
+        background-color: #ddd; 
+    } 
+   */
+   
+    div#container > div.content {
+        display: none;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        border-top: none;
+    }
+   
+    .active {
+      background-color: navy;
+      color: white;
+    }

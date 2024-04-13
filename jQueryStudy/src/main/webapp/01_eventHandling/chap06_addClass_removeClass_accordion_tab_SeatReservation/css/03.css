@@ -1,0 +1,81 @@
+div#container {
+    /* border: solid 1px gray; */
+    
+    width: 90%;
+    margin: 0 auto;
+    padding: 2%;
+ }
+ 
+ div#container > div#age_cnt_div {
+    margin: 5% 10%;
+ }
+ 
+ div#container > div#age_cnt_div > select{
+    width: 220px;
+    height:50px;
+    font-size: 14pt;
+ }
+ 
+ div#container > div#age_cnt_div > input{
+    width: 70px;
+    height:45px;
+    font-size: 14pt;
+    text-align: center; 
+ }
+ 
+ div#container > div#age_cnt_div > button{
+    width: 150px;
+    height:45px;
+    font-size: 14pt;
+    text-align: center; 
+    margin-left: 10%;
+ }
+ 
+ div#container > div#reservation_div > div#titleDiv > div {
+    font-size: 20pt;
+    background-color: navy;
+    color: white;
+    width: 30%;
+    margin: 2% auto;
+    padding: 0.5%; 
+    text-align: center;
+ }
+ 
+ div#container > div#reservation_div > div#screenDiv > div {
+    border: solid 2px gray;
+    font-size: 16pt;
+    /*background-color: navy;
+    color: white;*/
+    width: 80%;
+    margin: 2% auto;
+    padding: 0.5%; 
+    text-align: center;
+ }
+ 
+ div#container > div#reservation_div > div#btnsDiv {
+    /*border: solid 1px red;*/
+    padding-left: 5%;
+ }
+ 
+ div#container > div#reservation_div > div#btnsDiv > button {
+    font-size: 20pt;
+    width: 100px;
+    height: 50px;
+    margin: 0 1%;
+ }
+ 
+ div#container > div#reservation_div > div#btnsDiv > span {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    margin: 0 1%;
+   /*background-color: red;*/
+ }
+ 
+ div#container > div#sum_pay {
+   /*border: solid 1px gray;*/
+    width: 40%;
+    margin: 5% auto;
+    font-size: 20pt;
+    text-align: center;
+ }
