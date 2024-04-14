@@ -133,10 +133,10 @@ $(document).ready(function(){
                     case `성인`:
                         sum_pay += 14000;
                         break;
-                    case '청소년':
+                    case `청소년`:
                         sum_pay += 10000;
                         break;
-                    case '어린이':
+                    case `어린이`:
                         sum_pay += 8000;
                         break;
                 }   // end of switch (`${age}`)------------------

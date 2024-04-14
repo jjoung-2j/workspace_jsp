@@ -69,7 +69,7 @@ $(document).ready(function(){
                     is_correct = true;
                 }
 
-                return false;
+                return false;   // each 문 내에 존재하니 break 로 적용
             }
 
         })  // end of $("input:radio[name='answer']").each(function(index, elmt){}----
