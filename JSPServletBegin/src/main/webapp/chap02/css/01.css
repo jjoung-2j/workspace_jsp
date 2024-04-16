@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+div#container {
+	width: 70%;
+	margin: 30px auto;
+}
+
+div#container > form ul {
+	list-style-type: none;
+}
+
+div#container > form ul > li {
+	line-height: 200%;
+}

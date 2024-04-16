@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+ol {
+	list-style-type: decimal-leading-zero;
+}
+
+ol > li {
+	line-height: 150%;
+}
+
+p#today {
+	margin-top: 20px;
+	color: blue;
+	font-size: 20pt;
+	font-weight: bold;
+}

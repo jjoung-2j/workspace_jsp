@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+span#result_1{
+	color: red;
+}
+
+span#result_2{
+	color: blue;
+}

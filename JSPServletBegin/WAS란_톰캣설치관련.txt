@@ -1,0 +1,52 @@
+※ Web Server 
+ --> html 파일과 
+     jpg, png, gif 확장자로 되어진 이미지 파일로 이루어진 정적인 문서나 이미지 파일을 웹페이지로 보여지게끔 제공해주는 서버이다.
+
+※ WAS(Web Application Server)
+ --> Web Server 기능 + Web Container(웹컨테이너) 기능을 합친것을 말한다.
+
+ ==> Web Container(웹컨테이너)란?   
+     -- JSP(HTML 페이지속에 Java 소스가 올라가 있는 페이지) 와 
+        Servlet(웹기능을 하도록 만들어진 Java Class)을 실행시킬수 있는 소프트웨어이다.
+     
+     JSP 와 Servlet 은 자바변수가 사용되어 지므로 입력되어지는 변수값에 따라 그 내용이 변하므로 동적 웹페이지를 구현한다.
+     Web Server에 JSP 페이지를 요청하면  Web Container 가 JSP 파일을  Servlet 으로 변환하여 컴파일을 수행해주고 
+     Servlet 의 실행결과물을  Web Server에게 전달하여 화면에 보여준다.
+
+
+ ※ Web Server 의 종류
+    -- Apache, IIS(Internet Information Server), WebtoB(티맥스소프트,국산) 
+ 
+ ※ Web Containter 의 종류
+    -- Tomcat, Jeus(티맥스소프트,국산), WebSphere(IBM), WebLogic(오라클사), JBoss(Redhat), Resin(Caucho) 
+
+ ---------------------------------------------------------
+ 
+ ===> C:\SW\apache-tomcat-10.1.19\conf\server.xml 파일 수정하기 <====
+ C:\SW\apache-tomcat-10.1.19\conf\server.xml 파일에서
+ --> 오라클 11g 를 설치한 경우 오라클이 웹브라우저로 관리하기 위해 사용하고 있는 웹포트번호가 8080 이다.
+     그래서 내 컴퓨터에 오라클 11g 를 설치한 경우라면 이미 8080 포트번호가 사용중이므로 
+     중복을 피하고자 아파치톰캣서버의 port 번호를 기본값인 8080 에서 9090 으로 변경하도록 한다.  
+
+ <Connector port="9090" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443"
+               maxParameterCount="1000"
+               />
+
+
+===> C:\SW\apache-tomcat-10.1.19\conf\context.xml 파일 수정하기 <====
+ 19번 라인의 <Context> 를 
+ <Context reloadable="true" privileged="true"> 으로 수정한다.
+ ===> 이렇게 수정해주면 배치서술자인 WEB-INF/web.xml 파일의 내용이 변경되면 웹 애플리케이션이 다시 로드되도록 만드는 것이다.
+
+
+ 
+            
+
+
+
+
+
+
+
