@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>하위요소(하위태그)를 찾는 children(), find()에 대해서 알아봅니다.</title> 
+
+<link rel="stylesheet" href="css/01.css">
+
+<script type="text/javascript" src="../../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="js/01.js"></script>
+
+</head>
+<body>
+    <h1>children()</h1>
+    
+	<div id="container1">
+		<h2>h2</h2>
+		<div id="mydiv">div 태그
+			<ul id="ul1">ul 태그
+				<li class="baseball">li태그 야구</li>
+				<li id="football">li태그 축구</li>
+				<li>li태그 농구</li>
+			</ul>
+			
+			<ul id="ul2">ul 태그2
+				<li>li태그 콜라</li>
+				<li>li태그 커피</li>
+				<li>li태그 사이다</li>
+			</ul>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<h1>find()</h1>
+    
+	<div id="container2">
+		<h2>h2</h2>
+		<div>div 태그
+			<ul>ul 태그
+				<li class="baseball">li태그 야구</li>
+				<li id="football">li태그 축구</li>
+				<li>li태그 농구</li>
+			</ul>
+			
+			<ul>ul 태그2
+				<li>li태그 콜라</li>
+				<li>li태그 커피</li>
+				<li>li태그 사이다</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

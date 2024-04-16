@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+hr {
+	border: solid 2px orange;
+	height: 10px;
+	background-color: orange;
+	margin: 50px 0;
+}

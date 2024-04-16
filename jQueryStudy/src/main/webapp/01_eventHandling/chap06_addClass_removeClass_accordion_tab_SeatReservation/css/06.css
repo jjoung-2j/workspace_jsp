@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+   div#container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px; 
+   }
+   
+   div#container > button.accordion {
+        display: block;
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 50%;
+        border: none;
+        /* border: solid 1px red;   */
+        text-align: left;
+        outline: none;
+        font-size: 15px; 
+        transition: 0.5s;  /* transition은 속성을 서서히 변화시키는 속성이다. 
+                         3s는 transition 실행시간으로써 반드시 지정해주어야 한다.
+                         지정해주지 않으면 기본값인 0s 가 적용되어 아무런 효과가 나타나지 않는다.
+                         보통 transition은 태그(요소)에 마우스오버 했을때 변화가 나타난다. 
+                         글꼴 크기가 12pt 이었다가 마우스 오버할 경우 20pt로 커지든지 , 
+                         너비가 100px 이었다가 마우스 오버할 경우 200px로 늘어난다든지 할때
+                         변화되는 과정을 부드럽게 표시할때 사용하는 것이다. 
+                         IE버전 10 이상부터 사용이 가능하다. */
+   }
+   
+   div#container > button.accordion:hover {
+        background-color: #aaa;
+        /* width: 100%; */
+        /* font-size: 20px;  */
+   } 
+
+    div#container > div.panel {
+    /* border: solid 1px gray; */
+      width: 45.8%;
+      padding: 0 2%;
+   }
+   
+   

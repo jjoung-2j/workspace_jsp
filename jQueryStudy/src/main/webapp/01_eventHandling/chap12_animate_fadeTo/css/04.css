@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+ img.fish, img.person {
+   	display: inline-block;
+   	margin-right: 5%;
+ }
+   
+ img.fish:hover {
+    opacity: 0.8;
+   	cursor: pointer;
+ }

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+div#container {
+   width: 80%;
+   margin: 0 auto;
+/* border: 1px solid red; */
+}
+
+div#container > div#firstdiv > img {margin: 20px;}

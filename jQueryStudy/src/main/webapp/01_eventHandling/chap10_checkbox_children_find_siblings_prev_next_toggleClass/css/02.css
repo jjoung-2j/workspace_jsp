@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+div#container { 
+	width: 96.5%;
+	margin: 0 auto;
+	padding: 2%;
+ /* border: 1px solid green; */
+}
+
+div#container > div#firstDiv { 
+	width: 100%;
+	margin: 2%;
+ /* border: 1px solid red; */
+}
+
+.buttons, .buttons2 { 
+	border: 2px solid orange;
+    margin: 10px;
+    padding: 5px;
+    color: #ff0000;
+    background-color: yellow;
+    font-size: 15pt;
+    cursor: pointer;
+}
+
+.changeCSSname {
+	color: #fff;
+    background-color: navy;
+}
+
+button#btnOK {
+	width: 90px;
+    height: 40px; 
+    font-size: 12pt;
+    background-color: navy;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+div#checkboxCnt {font-size: 16pt;}
+
+.blueColor {color: blue;}
+.greenColor {color: green;}
+

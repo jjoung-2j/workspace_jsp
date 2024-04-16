@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+	div#container {
+	 /* border: solid 1px gray; */
+		width: 90%;
+		margin: 0 auto;
+		padding: 3%;
+	}
+
+	div#container > div#divBtn {
+	 /* border: solid 1px red; */
+		display: table;
+		width: 40%;
+		min-height: 10px;
+		margin: 20px;
+	}
+	
+	div#container > div#divBtn > span {
+		border: solid 2px orange;
+		display: table-cell;
+		width: 100px;
+		height: 30px;
+		text-align: center;
+		vertical-align: middle;
+		padding: 10px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	
+	span.empty {
+		border-left: none;
+		border-right: none;
+	}
+	
+	
+	

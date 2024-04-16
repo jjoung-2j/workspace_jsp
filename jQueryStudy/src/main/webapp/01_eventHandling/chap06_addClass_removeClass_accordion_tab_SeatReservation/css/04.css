@@ -9,8 +9,6 @@
     }
    
     div#container > div#tab {
-    /*   border: solid 1px red; */
-      
       border: solid 1px #ccc;
       background-color: #f1f1f1; 
       overflow: hidden;
@@ -28,11 +26,11 @@
       /* 버튼과 버튼사이의 여백없이 계속해서 붙여가면서 하려고 하는 것임 */
    }
    
-    /*   확인용 ?
+/*  hover
     div#tab > button:hover {
         background-color: #ddd; 
     } 
-   */
+*/
    
     div#container > div.content {
         display: none;

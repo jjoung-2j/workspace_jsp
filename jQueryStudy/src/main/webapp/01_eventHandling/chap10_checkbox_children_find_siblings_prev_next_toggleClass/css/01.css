@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body {
+	padding: 20px 0 40px 0;
+}
+
+div#container1, div#container2 {
+	width: 80%;
+	margin: 0 auto;
+	border: solid 2px gray;
+	padding: 10px;
+}
+
+hr {
+	border: solid 2px gold;
+	margin: 30px 0;
+}
+	
+	

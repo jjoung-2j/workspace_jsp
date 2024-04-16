@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/*common style*/
+body {
+	font-family: "맑은 고딕";
+}
+
+.content-ex {
+	position: relative;
+	left: 0px;
+	top: -20px;
+	background: #04548b;
+	color: #FFFFFF;
+}
+
+.row-ex {
+	margin-top: -20px;
+}
+
+.custom-icon-bar {
+	background-color: #583E7E;
+}
+.custom-navbar:hover, 
+.custom-navbar:focus{
+	background-color:#e8e8e8;
+}
+/*index style*/
+/*해상도 768까지*/
+@media ( max-width : 768px) {
+	.nav-ex li {
+		border-top: 1px solid #e5e5e5;
+	}
+	.custom-image-space {
+		margin-bottom: 13px;
+	}
+}
+/*해상도991까지*/
+@media ( min-width : 769px) and ( max-width : 991px) {
+	.custom-image-space {
+		margin-bottom: 28px;
+	}
+	.custom-login-submit {
+		margin: 2px 0 0 0;
+	}
+	.custom-input {
+		padding:0 0 25px 0;
+	}
+	.custom-submit{
+		height:70px;
+	}
+}
+/*board style*/
+table {
+	margin-top: 3px;
+}
+
+.pagination-align {
+	text-align: center;
+}
+/*login,register style*/
+/*해상도992이상*/
+@media ( min-width : 992px) {
+	.custom-login-submit {
+	margin: 2px 0 0 0;
+	}
+	.custom-input {
+		padding:0 0 25px 0;
+	}
+	.custom-submit{
+		height:70px;
+	}
+}
+/*register style*/
+.custom-register-submit{
+	text-align:center;
+}

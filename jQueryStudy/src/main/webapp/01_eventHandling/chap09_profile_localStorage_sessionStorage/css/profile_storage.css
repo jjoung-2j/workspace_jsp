@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+div#container {
+      width: 80%;
+      margin: 0 auto;
+   /* border: 1px solid red; */
+}
+
+div#container > div#firstdiv > span {
+      display: inline-block;
+      border: 2px solid orange;
+      margin: 20px;
+      padding: 5px;
+      background-color: red;
+      color: yellow;
+      font-size: 15pt;
+      cursor: pointer;
+      width: 100px;
+      text-align: center;
+   }
+   
+div#container > div#face > img {
+	border-radius: 20%;
+}   
+   
+div#container > div#face > ul {
+ /* border: solid 1px gray; */
+	list-style-type: none;
+	text-align: left;
+	font-size: 14pt;
+	width: 25%;
+	padding-left: 70px;
+}   
+   
+div#container > div#face > ul > li {
+	line-height: 200%;	
+}   
+
+div#container > div#face > ul > li > label {
+	display: inline-block;
+	width: 60px;
+}
+
+div#container > div#face > span#profileMore {
+ /* border: solid 1px gray; */
+	display: block;
+	margin-top: 30px;
+	color: blue;
+	font-style: italic;
+	cursor: pointer;
+}
+
+div#container > div#face > span#profileClose {
+ /* border: solid 1px gray; */
+	display: block;
+	margin-top: 30px;
+	color: red;
+	font-style: italic;
+	cursor: pointer;	
+}
+
+div#profileInfo > ul {
+   border: solid 1px gray; 
+   list-style-type: none;
+   width: 20%;
+   padding-left: 0;
+   text-align: left;
+}   
+ 
+div#profileInfo > ul > li {
+ /* border: solid 1px blue; */
+	line-height: 200%;
+}   
+   
+div#profileInfo > ul > li > label {
+ /*	border: solid 1px red; */
+	display: inline-block;
+	width: 80px;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+   
+   

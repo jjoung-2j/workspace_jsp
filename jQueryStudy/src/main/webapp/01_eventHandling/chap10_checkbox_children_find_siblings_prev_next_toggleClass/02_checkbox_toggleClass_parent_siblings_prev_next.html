@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>toggleClass, checkbox, parent(), siblings(), prev(), next() 에 대해서 알아본다.</title> 
+
+<link rel="stylesheet" href="css/02.css">
+
+<script type="text/javascript" src="../../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="js/02.js"></script>
+ 
+</head>
+<body>
+	<div id="container">
+		<div id="firstDiv" align="center">
+			<h2>마음에 드는 사람 2명을 선택하세요</h2>
+			<p>
+				<span class="buttons">
+				   <label for="checkall">모두 체크/해제</label>
+				   <input type="checkbox" name="checkall" id="checkall" value="" />
+				</span>
+				<span class="buttons">
+				   <label for="person0">일순신</label>
+				   <input type="checkbox" name="person" id="person0" value="일순신" />
+				</span>
+				<span class="buttons">
+				   <label for="person1">이순신</label>
+				   <input type="checkbox" name="person" id="person1" value="이순신" />
+				</span>
+			    <span class="buttons">
+			       <label for="person2">삼순신</label>
+			       <input type="checkbox" name="person" id="person2" value="삼순신" />
+			    </span>
+			    <span class="buttons">
+			       <label for="person3">사순신</label>
+			       <input type="checkbox" name="person" id="person3" value="사순신" />
+			    </span>
+			    <span class="buttons">
+			       <label for="person4">오순신</label>
+			       <input type="checkbox" name="person" id="person4" value="오순신" />
+			    </span>
+			    <span class="buttons">
+			       <label for="person5">육순신</label>
+			       <input type="checkbox" name="person" id="person5" value="육순신" />
+			    </span>
+			<p>
+			    <button type="button" id="btnOK">확인</button>     
+		</div>
+		
+		
+		<div id="checkboxCnt">
+		  <p>  
+		    체크박스의 갯수 : <span id="cnt" style="color: blue;"></span>
+		  </p><p>
+		    체크박스의 체크된 갯수(checked 속성이용) : <span id="checkedCnt" style="color: red;"></span> 
+		  </p><p>
+		    체크박스에서 체크된 value값(each 이용) : <span id="checkedValue" style="color: blue;"></span>     
+		  </p>
+		</div>
+		
+		<div style="border: 1px solid gold;"></div>
+		
+		<h2>마음에 드는 사람 1명을 선택하세요</h2>
+		<p id="p">
+			<span class="buttons2">
+			    <label for="person2-0">한석규</label>
+			    <input type="checkbox" name="person2" id="person2-0" value="한석규" />
+			    <label for="person2-0">입니다</label>
+			</span>
+			<span class="buttons2">
+			    <label for="person2-1">두석규</label>
+			    <input type="checkbox" name="person2" id="person2-1" value="두석규" />
+			    <label for="person2-1">입니다</label>
+			</span>
+		    <span class="buttons2" id="btnssk" >
+		        <label for="person2-2">세석규</label>
+		        <input type="checkbox" name="person2" id="person2-2" value="세석규" />
+		        <label for="person2-2">입니다</label>
+		    </span>
+		    <span class="buttons2">
+		        <label for="person2-3">네석규</label>
+		        <input type="checkbox" name="person2" id="person2-3" value="네석규" />
+		        <label for="person2-3">입니다</label>
+		    </span>
+		    <span class="buttons2">
+		        <label for="person2-4">오석규</label>
+		        <input type="checkbox" name="person2" id="person2-4" value="오석규" />
+		        <label for="person2-4">입니다</label>
+		    </span>
+		    <span class="buttons2">
+		        <label for="person2-5">육석규</label>
+		        <input type="checkbox" name="person2" id="person2-5" value="육석규" />
+		        <label for="person2-5">입니다</label>
+		    </span>
+		</p>
+		
+	</div>
+</body>
+</html>
