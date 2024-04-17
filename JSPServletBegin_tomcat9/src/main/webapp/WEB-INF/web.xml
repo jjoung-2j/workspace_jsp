@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>JSPServletBegin</display-name>
+  <display-name>JSPServletBegin_tomcat9</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -9,6 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>01_getMethod</servlet-name>
     <servlet-class>chap02.GetMethod_01</servlet-class>
@@ -41,14 +42,12 @@
     <servlet-name>04_get_post_Method</servlet-name>
     <url-pattern>/04_get_post_Method.do</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description>연습6</description>
-    <display-name>Get_Post_Method_06</display-name>
-    <servlet-name>Get_Post_Method_06</servlet-name>
-    <servlet-class>chap02.Get_Post_Method_06</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Get_Post_Method_06</servlet-name>
-    <url-pattern>/06_get_post_Method.do</url-pattern>
-  </servlet-mapping>
+  <filter>
+  	<filter-name>setCharacterEncoding</filter-name>
+  	<filter-class>my.filter.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>setCharacterEncoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

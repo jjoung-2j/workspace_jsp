@@ -7,9 +7,9 @@
 	// Edit 를 통해 Path 변경 가능
 
 	// System.out.println("ctxPath => " + ctxPath);		// 확인
-	// ctxPath => /JSPServletBegin	<== WAS (톰캣서버) path 설정의 기본값임
-	// ctxPath => /gclass			<== WAS (톰캣서버) path 설정의 /gclass 로 변경한 경우임
-	// ctxPath => 					<== WAS (톰캣서버) path 설정의 / 또는 아무것도 없는 것으로 변경한 경우임
+	// ctxPath => /JSPServletBegin_tomcat9	<== WAS (톰캣서버) path 설정의 기본값임
+	// ctxPath => /gclass					<== WAS (톰캣서버) path 설정의 /gclass 로 변경한 경우임
+	// ctxPath => 							<== WAS (톰캣서버) path 설정의 / 또는 아무것도 없는 것으로 변경한 경우임
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div id="container">
-		<%--<form action="/JSPServletBegin/01_getMethod.do">--%>
+		<%--<form action="/JSPServletBegin_tomcat9/01_getMethod.do">--%>
 		<%-- 컨텍스트 패스명을 사용해서 적는 이유
 			컨텍스트 패스명이 동일하다면 괜찮지만 그렇지 않을 경우 원하는 주소값을 얻지 못할 수 있다.
 			컨텍스트 패스명과 action 뒤 맨앞에 적힌 글씨가 동일하다면 같게 나오지만 그것이 아닐 경우
@@ -30,8 +30,8 @@
 		<%-- !! 중요 !!
           확장자가 .jsp 또는 .html 인 파일에서 URL경로를 나타낼때 맨 앞에 / 가 오면
           그 앞에는  http://ip주소:포트번호 가 자동으로 붙게 된다.
-          현재 <%= ctxPath%> 이  /JSPServletBegin 이므로 <%= ctxPath%>/01_getMethod.do 의 뜻은     
-          http://localhost:9090/JSPServletBegin/01_getMethod.do 이라는 말이다.        
+          현재 <%= ctxPath%> 이  /JSPServletBegin_tomcat9 이므로 <%= ctxPath%>/01_getMethod.do 의 뜻은     
+          http://localhost:9090/JSPServletBegin_tomcat9/01_getMethod.do 이라는 말이다.        
      	--%>
      	<%-- form 태그에서 submit(전송)을 하면
 	       http://localhost:9090/JSPServletBegin/01_getMethod.do 으로 데이터를 전송시킨다.
@@ -46,7 +46,7 @@
        --%>
        <%-- 
 	        submit 을 하면 <%= ctxPath%>/01_getMethod.do 로 보내어서 처리를 요청한다.
-	        /JSPServletBegin/01_getMethod.do 은 누가 처리를 해주는지는 배치서술자인 web.xml 에 기술되어져 있어야 한다.
+	        /JSPServletBegin_tomcat9/01_getMethod.do 은 누가 처리를 해주는지는 배치서술자인 web.xml 에 기술되어져 있어야 한다.
 	       web.xml 에 가보면 <servlet-mapping>에 URL 패턴으로 /01_getMethod.do 가 기술되어져 있고,
 	       이어서 실제로 처리를 해주는 <servlet-class>에 클래스명이 기술되어져 있다.
 	       바로 이렇게 기술되어진 <servlet-class>클래스명이 action 일처리를 해주게 된다.
