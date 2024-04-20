@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
    http://localhost:9090/JSPServletBegin/05_get_post_Method.do 을 처리해주는 서블릿은 GetPostMethod_05 이다.
 */
 
-@WebServlet("/05_get_post_Method.do")	// JSPServletBegin/05_get_post_Method.do 이렇게 작성시 더블된다.
+@WebServlet("/05_get_post_Method.do")// JSPServletBegin/05_get_post_Method.do 이렇게 작성시 더블된다.
 public class Get_Post_Method_05 extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
