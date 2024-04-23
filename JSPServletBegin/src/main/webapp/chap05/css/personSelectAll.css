@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+div#div1 {
+ /*   border: solid 1px gray; */ 
+   width: 80%;
+   margin: 20px auto;
+}   
+
+div#div1 > table {
+ /*   border: solid 1px red; */
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+div#div1 > table th, 
+div#div1 > table td {
+   border: solid 1px gray;
+}
+
+div#div1 > table th {
+   background-color: lightgray;
+   font-size: 13pt;
+   text-align: center;
+}
+
+div#div1 > table > tbody > tr:hover {
+   background-color: navy;
+   color: white;
+   cursor: pointer;
+}
+
+
+div#div1 > table > tbody > tr > td:first-child > span,
+div#div2   table > tbody > tr > td:first-child > span {
+    /* color: red; */  
+    display: none;  
+}

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+span#colorbox{
+	display : inline-block;
+	/* border: solid 1px gray; */
+	width: 30px;
+	height: 30px;
+	margin-left : 20px;
+	
+	position : relative;
+	top: 8px;
+}

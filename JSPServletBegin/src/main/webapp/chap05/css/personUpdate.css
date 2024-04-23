@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+div.container > form[name='updateFrm'] {
+   border: solid 0px red;
+   width: 80%;
+}
+
+div.container > form[name='updateFrm'] > div > label {
+   border: solid 0px blue;
+   font-size: 14pt;
+}
