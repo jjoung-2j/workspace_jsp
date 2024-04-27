@@ -51,11 +51,11 @@ public class ProductDAO_imple implements ProductDAO {
 		try {
 			conn = ds.getConnection();
 			
-			String sql = " select imgno,imgfilename "
+			String sql = " select imgno, imgfilename "
 					+ " from tbl_main_image "
 					+ " order by imgno asc ";
 			
-			conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
@@ -64,6 +64,7 @@ public class ProductDAO_imple implements ProductDAO {
 				imgvo.setImagno(rs.getInt("imgno"));
 				imgvo.setImgfilename(rs.getString("imgfilename"));
 				
+				imgList.add(imgvo);
 			}
 			
 		} finally {

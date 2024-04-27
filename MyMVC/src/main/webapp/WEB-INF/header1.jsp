@@ -10,34 +10,40 @@
 
 <title>:::HOMEPAGE:::</title> 
 
-<!-- Required meta tags -->
+<%-- Required meta tags --%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
+<%-- Bootstrap CSS --%>
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" > 
 
-<!-- Font Awesome 6 Icons -->
+<%-- Font Awesome 6 Icons --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<!-- 직접 만든 CSS -->
+<%-- 직접 만든 CSS --%>
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/css/template/template.css" />
 
-<!-- Optional JavaScript -->
+<%-- Optional JavaScript --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
+
+<%-- jQuery UI CSS 및 JS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+
+<%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
 
 </head>
 <body>
 
-   <!-- 상단 네비게이션 시작 -->
+   <%-- 상단 네비게이션 시작 --%>
    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mx-4 py-3">
       
-      <!-- Brand/logo --> <!-- Font Awesome 6 Icons -->
+      <%-- Brand/logo --%> <%-- Font Awesome 6 Icons --%>
       <a class="navbar-brand" href="<%= ctxPath %>/index.up" style="margin-right: 10%;"><img src="<%= ctxPath %>/images/sist_logo.png" /></a>
       
-      <!-- 아코디언 같은 Navigation Bar 만들기 -->
+      <%-- 아코디언 같은 Navigation Bar 만들기 --%>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -67,7 +73,7 @@
         </ul>
       </div>
    </nav>
-   <!-- 상단 네비게이션 끝 -->
+   <%-- 상단 네비게이션 끝 --%>
 
     <hr style="background-color: gold; height: 1.2px; position: relative; top:85px; margin: 0 1.7%;"> 
 

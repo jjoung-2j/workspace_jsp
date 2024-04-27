@@ -39,7 +39,7 @@ public class MyFilter extends HttpFilter implements Filter{
       //     request.getParameter("name"); 을 하기전에
       //     request.setCharacterEncoding("UTF-8"); 을 
       //     먼저 해주어야 한다.
-      request.setCharacterEncoding("UTF-8");
+      request.setCharacterEncoding("UTF-8");	// Tomcat 9 버전
 
       // pass the request along the filter chain
       chain.doFilter(request, response);

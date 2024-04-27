@@ -43,6 +43,7 @@ public class EncodeFilter extends HttpFilter implements Filter {
 		//     request.getParameter("name"); 을 하기전에
 		//     request.setCharacterEncoding("UTF-8"); 을 
 		//     먼저 해주어야 한다.
+		// Tomcat 10 버전은 한글입력이 가능하므로 setCharacterEncoding 을 안넣어주어도 된다.
 		chain.doFilter(request, response);
 	}
 

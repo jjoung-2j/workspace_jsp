@@ -26,4 +26,7 @@
     <!--
     <Manager pathname="" />
     -->
+	<!-- ======= MyDBCP Setting Start ======= -->
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="20" maxTotal="20" maxWaitMillis="10000" name="jdbc/myoracle" password="gclass" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="mymvc_user"/>
+    <!-- ======= MyDBCP Setting End ======= -->
 </Context>

@@ -29,11 +29,10 @@ public class EncodeFilter extends HttpFilter implements Filter {
 
 	public EncodeFilter() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		// 필터 인스턴스를 종료시키기 전에 호출하는 메소드
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -46,7 +45,8 @@ public class EncodeFilter extends HttpFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		// 서블릿 컨테이너가 필터 인스턴스를 초기화하기 위해서 호출하는 메소드
+	    // 여기는 기술할 필요가 없다.
 	}
 
 }
