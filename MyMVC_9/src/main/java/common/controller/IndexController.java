@@ -6,6 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import myshop.domain.ImageVO;
+import myshop.model.ProductDAO;
+import myshop.model.ProductDAO_imple;
+
 public class IndexController extends AbstractController {
 
 	private ProductDAO pdao = null;
@@ -19,7 +23,7 @@ public class IndexController extends AbstractController {
 		
 		try{
 			// === 모든 이미지 리스트 뽑기 === //
-			List<ImageVO> imgList = pdao.imageSelectALL();
+			List<ImageVO> imgList = pdao.imageSelectAll();
 		    request.setAttribute("imgList",imgList);
 		    
 		    super.setRedirect(false);
@@ -27,7 +31,7 @@ public class IndexController extends AbstractController {
 		} catch(SQLException e){
 			super.setRedirect(true);
 		    super.setViewPage(request.getContextPath() + "/error.do");
-		}
+		}	// end of try~catch-------------
 
 	}
 

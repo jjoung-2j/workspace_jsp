@@ -18,14 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FrontController
- */
 @WebServlet(
-		description = "사용자가 웹에서 *.up 을 했을 경우 이 서블릿이 응답을 해주도록 한다.", 
+		description = "사용자가 웹에서 *.do 을 했을 경우 이 서블릿이 응답을 해주도록 한다.", 
 		urlPatterns = { "*.do" }, 
 		initParams = { 
-				@WebInitParam(name = "propertyConfig", value = "C:\\NCS\\workspace_jsp\\MyMVC_9\\src\\main\\webapp\\WEB-INF\\Command.properties", description = "*.up에 대한 클래스의 매핑파일")
+				@WebInitParam(name = "propertyConfig", value = "C:\\NCS\\workspace_jsp\\MyMVC_9\\src\\main\\webapp\\WEB-INF\\Command.properties", description = "*.do에 대한 클래스의 매핑파일")
 		})
 public class FrontController extends HttpServlet {
 	
@@ -40,6 +37,9 @@ public class FrontController extends HttpServlet {
 		
 		String props = config.getInitParameter("propertyConfig");
 		// props = Servlet 에 지정한 value 값(location)
+		
+		// System.out.println("확인용 props =>" + props);
+		// 확인용 props =>C:\NCS\workspace_jsp\MyMVC_9\src\main\webapp\WEB-INF\Command.properties
 		
 		try {
 			// 읽어오기 위한 용도로 쓰이는 객체
@@ -56,7 +56,10 @@ public class FrontController extends HttpServlet {
 			
 			while(en.hasMoreElements()) {
 				String key = (String)en.nextElement();
+				// System.out.println("확인용 key : " + key);
+				
 				String className = pr.getProperty(key);
+				// System.out.println("확인용 value : " + pr.getProperty(key));
 				if(className != null) {
 					className = className.trim();
 					
