@@ -39,7 +39,7 @@
    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mx-4 py-3">
       
       <%-- Brand/logo --%> <%-- Font Awesome 6 Icons --%>
-      <a class="navbar-brand" href="<%= ctxPath %>/index.up" style="margin-right: 10%;"><img src="<%= ctxPath %>/images/sist_logo.png" /></a>
+      <a class="navbar-brand" href="<%= ctxPath %>/index.do" style="margin-right: 10%;"><img src="<%= ctxPath %>/images/sist_logo.png" /></a>
       
       <%-- 아코디언 같은 Navigation Bar 만들기 --%>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -49,13 +49,13 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav" style="font-size: 16pt;">
            <li class="nav-item active">
-              <a class="nav-link menufont_size" href="<%= ctxPath %>/index.up">Home</a>
+              <a class="nav-link menufont_size" href="<%= ctxPath %>/index.do">Home</a>
            </li>
            <li class="nav-item active">
-              <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberRegister.up">회원가입</a>
+              <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberRegister.do">회원가입</a>
            </li>
           <li class="nav-item">
-             <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberList.up">회원목록</a>
+             <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberList.do">회원목록</a>
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle menufont_size text-primary" href="#" id="navbarDropdown" data-toggle="dropdown"> 

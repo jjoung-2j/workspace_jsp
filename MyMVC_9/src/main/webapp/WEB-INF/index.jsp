@@ -31,13 +31,7 @@
 			  		<c:forEach var="imgvo" items="${requestScope.imgList}" varStatus="status">
 			  			<c:if test="${status.index == 0}">
 			  				<div class="carousel-item active">
-						    	<img src="<%= ctxPath %>/images/${imgvo.imgfilename}" class="d-block w-100" alt="..."> <!-- d-block 은 display: block; 이고  w-100 은 width 의 크기는 <div class="carousel-item active">의 width 100% 로 잡으라는 것이다. -->
-						    	<%-- 상품명 컬럼이 있는 경우
-						    	<div class="carousel-caption d-none d-md-block"> <!-- d-none 은 display : none; 이므로 화면에 보이지 않다가, d-md-block 이므로 d-md-block 은 width 가 768px이상인 것에서만 display: block; 으로 보여라는 말이다.  --> 
-							  		<h5>Koala</h5>
-							    	<p>Koala Content</p>
-							  	</div>
-							  	--%>
+						    	<img src="<%= ctxPath %>/images/${imgvo.imgfilename}" class="d-block w-100" alt="...">
 						   	</div>
 			  			</c:if>
 			  			<c:if test="${status.index > 0}">
