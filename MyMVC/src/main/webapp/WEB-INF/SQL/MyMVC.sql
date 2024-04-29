@@ -107,6 +107,153 @@ create table tbl_member
 );
 -- Table TBL_MEMBER이(가) 생성되었습니다.
 
+-- === 회원 정보 === --
 select *
 from tbl_member
 order by registerday desc;
+
+--------------------------------------------------------
+create table tbl_loginhistory
+(historyno   number
+,fk_userid   varchar2(40) not null  -- 회원아이디
+,logindate   date default sysdate not null -- 로그인되어진 접속날짜및시간
+,clientip    varchar2(20) not null
+,constraint  PK_tbl_loginhistory primary key(historyno)
+,constraint  FK_tbl_loginhistory_fk_userid foreign key(fk_userid) references tbl_member(userid)
+);
+-- Table TBL_LOGINHISTORY이(가) 생성되었습니다.
+
+create sequence seq_historyno
+start with 1
+increment by 1
+nomaxvalue
+nominvalue
+nocycle
+nocache;
+-- Sequence SEQ_HISTORYNO이(가) 생성되었습니다.
+
+-- === 로그인 기록 보기 === --
+select historyno
+    , fk_userid
+    , to_char(logindate,'yyyy-mm-dd hh24:mi:ss') as logindate
+    , clientip
+from tbl_loginhistory
+order by historyno desc;
+
+-- === 로그인 처리 === --
+select userid, name, coin, point
+from tbl_member
+where status = 1 and userid = 'leess' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382';
+
+-- 로그인 기록 1년 1개월 전으로 변경하기 --
+update tbl_loginhistory set logindate = add_months(logindate, -13)
+where historyno < 7;
+
+commit;
+-- 커밋 완료.
+
+/*
+    9	leess	    2024-04-29 15:37:31	127.0.0.1       ==> leess 이 마지막으로 로그인 한 날짜
+    8	kudi01	    2024-04-29 15:33:02	192.168.0.197
+    7	yerinjung	2024-03-29 15:28:30	192.168.0.200
+    6	leess	    2023-03-29 15:26:51	192.168.0.200
+    5	eomjh	    2023-03-29 15:22:47	192.168.0.197   ==> eomjh 가 마지막으로 로그인 한 날짜
+                    == (현재일이 2024-04-29 이므로 마지막으로 로그인 한지가 1년이 초과되었으므로 휴면처리 한다.) ==
+    4	eomjh	    2023-03-29 15:20:46	127.0.0.1
+    3	leess	    2023-03-29 15:20:25	127.0.0.1
+    2	eomjh	    2023-03-29 15:20:11	127.0.0.1
+    1	leess	    2023-03-29 15:18:18	127.0.0.1
+*/
+
+-- == 이순신 로그인 기록 == --
+SELECT *
+FROM
+(
+    select userid, name, coin, point
+    from tbl_member
+    where status = 1 and userid = 'leess' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select max(to_char(logindate,'yyyy-mm-dd hh24:mi:ss')) as logindate
+    from tbl_loginhistory
+    where fk_userid = 'leess'
+)H;
+
+-- == 엄정화 1년전 로그인 하여 휴면처리 할 예정 == --
+SELECT userid, name, coin, point, logindate
+FROM
+(
+    select userid, name, coin, point
+    from tbl_member
+    where status = 1 and userid = 'eomjh' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select max(to_char(logindate,'yyyy-mm-dd hh24:mi:ss')) as logindate
+    from tbl_loginhistory
+    where fk_userid = 'eomjh'
+)H;
+
+------------------------------------------------------------------------------
+-- ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆ --
+
+-- === 오늘과 몇개월 차이인지 구하기 === --
+SELECT userid, name, coin, point, lastlogingap
+FROM
+(
+    select userid, name, coin, point
+    from tbl_member
+    where status = 1 and userid = 'eomjh' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap     -- 개월 수 차이 확인
+    from tbl_loginhistory
+    where fk_userid = 'eomjh'
+)H
+WHERE lastlogingap > 12;
+
+
+-- === 오늘과 몇개월 차이인지 구하기 === --
+SELECT userid, name, coin, point, lastlogingap
+FROM
+(
+    select userid, name, coin, point
+    from tbl_member
+    where status = 1 and userid = 'leess' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap     -- 개월 수 차이 확인
+    from tbl_loginhistory
+    where fk_userid = 'leess'
+)H;
+
+-- === 휴면처리 해제하기 === --
+-- update tbl_member set idle = 0;
+
+-- 휴면이 아닌 이순신 회원 --
+update tbl_member set registerday = add_months(registerday, -5)
+                    , lastpwdchangedate = add_months(lastpwdchangedate, -4)
+where userid = 'leess';
+-- 1 행 이(가) 업데이트되었습니다.
+
+commit;
+-- 커밋 완료.
+
+-- === 회원 테이블 확인 === --
+select userid, registerday, lastpwdchangedate, idle
+from tbl_member;
+
+-- === 로그인 기록 보기 === --
+select historyno
+    , fk_userid
+    , to_char(logindate,'yyyy-mm-dd hh24:mi:ss') as logindate
+    , clientip
+from tbl_loginhistory
+order by historyno desc;

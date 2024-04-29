@@ -27,6 +27,13 @@ public class MemberVO {
 	
 	////////////////////////////////////////////////////////////////////
 	
+	// === Select 용 === //
+	private boolean requirePwdChange = false;
+	// 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지났으면 true
+	// 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지나지 않았으면 false
+	
+	////////////////////////////////////////////////////////////////////
+	
 	// === Getter, Setter === //
 	public String getUserid() {
 		return userid;
@@ -132,6 +139,16 @@ public class MemberVO {
 	}
 	public void setIdle(int idle) {
 		this.idle = idle;
+	}
+	
+	//////////////////////////////////////////////////////////////////
+	
+	// === Select 용 Getter, Setter === //
+	public boolean isRequirePwdChange() {
+		return requirePwdChange;
+	}
+	public void setRequirePwdChange(boolean requirePwdChange) {
+		this.requirePwdChange = requirePwdChange;
 	}
 	
 }

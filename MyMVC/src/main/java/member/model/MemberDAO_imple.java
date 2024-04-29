@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -162,5 +163,103 @@ public class MemberDAO_imple implements MemberDAO {
 		}
 		return isExists;
 	}	// end of public boolean EmailDuplicateCheck(String email)--------
+
+/////////////////////////////////////////////////////////////////////////////
+	
+	// 로그인 처리
+	@Override
+	public MemberVO login(Map<String, String> paraMap) throws SQLException {
+		
+		MemberVO member = null;		// 로그인이 성공되어져야만 new 데이터를 넣어줄것!
+		
+		try {
+			
+			conn = ds.getConnection();
+			/*
+			String sql = " select userid, name, coin, point "
+					+ " from tbl_member "
+					+ " where status = 1 and userid = ? and pwd = ? ";
+			*/
+			
+			String sql = " SELECT userid, name, coin, point, pwdchangegap, lastlogingap "
+					+ " FROM "
+					+ " ( "
+					+ "    select userid, name, coin, point"
+					+ "		, trunc(months_between(sysdate, lastpwdchangedate)) as pwdchangegap "
+					+ "    from tbl_member "
+					+ "    where status = 1 and userid = ? and pwd = ? "
+					+ " )M "
+					+ " CROSS JOIN "
+					+ " ( "
+					+ "    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap "
+					+ "    from tbl_loginhistory "
+					+ "    where fk_userid = ? "
+					+ ")H ";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("userid"));
+			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")));
+			pstmt.setString(3, paraMap.get("userid"));
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				member = new MemberVO();
+				
+				member.setUserid(rs.getString("userid"));
+				member.setName(rs.getString("name"));
+				member.setCoin(rs.getInt("coin"));
+				member.setPoint(rs.getInt("point"));
+				
+				// === 휴면 계정하기 === //
+				if(rs.getInt("lastlogingap") >= 12) {
+					// 마지막으로 로그인 한 날짜시간이 현재시각으로 부터 1년이 지났으면 휴면으로 지정
+					
+					member.setIdle(1);	// MemberVO 의 idle 값 변경(휴면)
+					
+					// === tbl_member 테이블의 idle 컬럼의 값을 1로 변경하기 === //
+					sql = " update tbl_member set idle = 1 "
+							+ " where userid = ? ";
+					
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, paraMap.get("userid"));
+					
+					pstmt.executeUpdate();
+				}
+				
+				// === 1년 이내 로그인 한 회원은 로그기록에 남기기 === //
+				if(rs.getInt("lastlogingap") < 12) {
+					// === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 시작 === //
+					sql = " insert into tbl_loginhistory(historyno, fk_userid, clientip) "
+							+ " values(seq_historyno.nextval, ?, ?) ";
+					
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, paraMap.get("userid"));
+					pstmt.setString(2, paraMap.get("clientip"));
+					
+					pstmt.executeUpdate();
+					// === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 끝 === //
+					
+					if(rs.getInt("pwdchangegap") >= 3) {	// 암호를 변경한 지 3개월 이상
+						// 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지났으면 true
+			            // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지나지 않았으면 false
+						
+						// 로그인시 암호를 변경해라는 alert 를 띄우도록 할때 사용한다.
+						member.setRequirePwdChange(true); 	// 3개월 지남
+					}
+				}
+				
+			}	// end of if(rs.next())---------------
+			
+		} finally {
+			close();
+		}
+		
+		return member;
+		
+	}	// end of public MemberVO login(Map<String, String> paraMap) throws SQLException---
 	
 }

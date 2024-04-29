@@ -82,7 +82,10 @@
      <div class="row">
        <div class="col-md-3" id="sideinfo">
          <div style="height: 200px; text-align: left; padding: 20px;">
-            2. 로그인/Tree/View
+            
+            <%-- === 로그인 처리하기 === --%>
+            <%@ include file="/WEB-INF/login/login.jsp" %>
+            
          </div>
          <div id="sidecontent" style="text-align: left; padding: 20px;"></div>
        </div>
