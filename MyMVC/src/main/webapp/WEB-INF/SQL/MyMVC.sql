@@ -257,3 +257,57 @@ select historyno
     , clientip
 from tbl_loginhistory
 order by historyno desc;
+
+--------------------------------------------------------------------------------------------------
+-- ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆ --
+-- === 자동 로그인이 없는 경우 === --
+select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap     -- 개월 수 차이 확인
+    from tbl_loginhistory
+    where fk_userid = 'asdflkdasf';
+-- 회원가입이후 로그인을 1년넘게 안한경우 휴면처리를 해야하는데 로그기록이 없다.(NULL)
+
+-- === 확인방법(Commit X / rollback 할 예정) === --
+delete from tbl_loginhistory where fk_userid = 'chaew';
+
+-- === lastlogingap 값이 NULL 값이 나오는 것을 확인 === --
+SELECT userid, name, coin, point, lastlogingap
+FROM
+(
+    select userid, name, coin, point
+    from tbl_member
+    where status = 1 and userid = 'chaew' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap     -- 개월 수 차이 확인
+    from tbl_loginhistory
+    where fk_userid = 'chaew'
+)H;
+
+-- === 대체 방법 (가입한 날짜와 현재날짜 비교) === --
+SELECT userid, name, coin, point, , pwdchangegap
+    , nvl(lastlogingap, registerday) as lastlogingap
+FROM
+(
+    select userid, name, coin, point, trunc(months_between(sysdate, registerday),0) as registerday
+    from tbl_member
+    where status = 1 and userid = 'chaew' and pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+)M
+CROSS JOIN
+(
+    -- === 제일 마지막에 로그인한 기록 === --
+    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap     -- 개월 수 차이 확인
+    from tbl_loginhistory
+    where fk_userid = 'chaew'
+)H;
+
+rollback;
+
+-- ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆ --
+--------------------------------------------------------------------------------------------------
+
+-- === 아이디 찾기 === --
+select userid
+from tbl_member
+where status = 1 and name = '양혜정' and email = 'Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As=';

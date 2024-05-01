@@ -16,11 +16,15 @@ public class Logout extends AbstractController {
 	///////////////////////////////////////////////////////////////////////////	
 		
 		// 첫번째 방법 : 세션을 그대로 존재하게끔 해두고, 세션에 저장되어진 어떤 값(지금은 로그인 되어진 회원객체)을 삭제하기
-		session.removeAttribute("login_user");
+		//session.removeAttribute("login_user");
 		
 	///////////////////////////////////////////////////////////////////////////
 		
-		// 두번째 방법 : WAS 메모리 상에서 세션을 아예 삭제해버리기 
+		// 두번째 방법 : WAS 메모리 상에서 세션에 저장된 모든 데이터를 삭제해버리기 
+		session.invalidate();
+		
+		// => 첫번째 : 특정 데이터, 두번째 : 모든 데이터
+		
 		super.setRedirect(true);
 		super.setViewPage(request.getContextPath() + "/index.up");
 		

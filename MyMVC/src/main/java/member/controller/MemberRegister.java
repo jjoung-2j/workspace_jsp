@@ -63,7 +63,7 @@ public class MemberRegister extends AbstractController {
 			member.setGender(gender);
 			member.setBirthday(birthday);
 			
-			// === 회원가입이 성공되어지면 "회원가입 성공" 이라는 alert 를 띄우고 시작페이지로 이동 === //
+/*			// === 회원가입이 성공되어지면 "회원가입 성공" 이라는 alert 를 띄우고 시작페이지로 이동 === //
 			String message = "";
 			String location = "";
 			
@@ -87,7 +87,32 @@ public class MemberRegister extends AbstractController {
 			
 			super.setRedirect(false);	// forward
 			super.setViewPage("/WEB-INF/msg.jsp");
+*/
+			// #### === 회원가입이 성공되어지면 자동으로 로그인 되도록 하겠다. === #### //
+			try {
+				
+				int n = mdao.registerMember(member);	// return 타입 int
 			
+				if(n==1) {
+					request.setAttribute("userid", userid);
+					request.setAttribute("pwd", pwd);
+					
+					super.setRedirect(false);	// forward
+					super.setViewPage("/WEB-INF/login/memberRegister_after_autoLogin.jsp");	// 자동 로그인 페이지
+				}
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+				
+				String message = "회원가입 실패ㅠㅠ";
+				String location = "javascript:history.back()";	// 자바스크립트를 이용한 이전페이지로 이동하는 것
+				
+				request.setAttribute("message", message);
+				request.setAttribute("location", location);
+				
+				super.setRedirect(false);	// forward
+				super.setViewPage("/WEB-INF/msg.jsp");
+			}	// end of try~catch------------
 		}	// end of if~else--------------------------------------
 		
 	}

@@ -158,6 +158,7 @@ public class MemberDAO_imple implements MemberDAO {
             // 행이 없으면(사용가능한 email) false
 			
 		} catch(UnsupportedEncodingException | GeneralSecurityException e){
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -175,12 +176,14 @@ public class MemberDAO_imple implements MemberDAO {
 		try {
 			
 			conn = ds.getConnection();
-			/*
+			
+			/* === 로그기록 생성 이전 ===
 			String sql = " select userid, name, coin, point "
 					+ " from tbl_member "
 					+ " where status = 1 and userid = ? and pwd = ? ";
 			*/
 			
+			/* === 자동로그인이 있는 경우 ===
 			String sql = " SELECT userid, name, coin, point, pwdchangegap, lastlogingap "
 					+ " FROM "
 					+ " ( "
@@ -195,6 +198,28 @@ public class MemberDAO_imple implements MemberDAO {
 					+ "    from tbl_loginhistory "
 					+ "    where fk_userid = ? "
 					+ ")H ";
+			*/
+			
+			// 자동로그인이 없는 경우( 현재는 자동로그인이므로 바로 위의 것도 가능 )
+			// + idle( 휴면유무 ) 컬럼 추가
+			String sql = " SELECT userid, name, coin, point , pwdchangegap "
+					+ " , nvl(lastlogingap, registerday) as lastlogingap "
+					+ " , idle "
+					+ " FROM "
+					+ " ( "
+					+ "    select userid, name, coin, point "
+					+ "			, trunc(months_between(sysdate, lastpwdchangedate)) as pwdchangegap "
+					+ " 		, trunc(months_between(sysdate, registerday),0) as registerday "
+					+ "			, idle "
+					+ "    from tbl_member "
+					+ "    where status = 1 and userid = ? and pwd = ? "
+					+ " )M "
+					+ " CROSS JOIN "
+					+ " ( "
+					+ "    select trunc(months_between(sysdate, max(logindate)),0) as lastlogingap "
+					+ "    from tbl_loginhistory "
+					+ "    where fk_userid = ? "
+					+ " )H ";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, paraMap.get("userid"));
@@ -218,15 +243,17 @@ public class MemberDAO_imple implements MemberDAO {
 					
 					member.setIdle(1);	// MemberVO 의 idle 값 변경(휴면)
 					
-					// === tbl_member 테이블의 idle 컬럼의 값을 1로 변경하기 === //
-					sql = " update tbl_member set idle = 1 "
-							+ " where userid = ? ";
-					
-					pstmt = conn.prepareStatement(sql);
-					
-					pstmt.setString(1, paraMap.get("userid"));
-					
-					pstmt.executeUpdate();
+					if(rs.getInt("idle") == 0) {	// 현재 휴면처리가 안된 회원
+						// === tbl_member 테이블의 idle 컬럼의 값을 1로 변경하기 === //
+						sql = " update tbl_member set idle = 1 "
+								+ " where userid = ? ";
+						
+						pstmt = conn.prepareStatement(sql);
+						
+						pstmt.setString(1, paraMap.get("userid"));
+						
+						pstmt.executeUpdate();
+					}
 				}
 				
 				// === 1년 이내 로그인 한 회원은 로그기록에 남기기 === //
@@ -261,5 +288,71 @@ public class MemberDAO_imple implements MemberDAO {
 		return member;
 		
 	}	// end of public MemberVO login(Map<String, String> paraMap) throws SQLException---
+
+////////////////////////////////////////////////////////////////////////////////////
+	
+	// 아이디 찾기(성명, 이메일을 입력받아서 해당 사용자의 아이디를 알려준다)
+	@Override
+	public String findUserid(Map<String, String> paraMap) throws SQLException {
+		
+		String userid = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select userid "
+					+ " from tbl_member "
+					+ " where status = 1 and name = ? and email = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("name"));
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")));
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userid = rs.getString("userid");
+			}
+			
+		} catch(UnsupportedEncodingException | GeneralSecurityException e){
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return userid;
+		
+	}	// end of public String findUserid(Map<String, String> paraMap) throws SQLException-------
+
+///////////////////////////////////////////////////////////////////////////////
+	
+	// 비밀번호 찾기(아이디, 이메일을 입력받아서 해당 사용자가 존재하는지 유무를 알려준다.)
+	@Override
+	public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
+		boolean isUserExist = false;
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select userid "
+	                    + " from tbl_member "
+	                    + " where status = 1 and userid = ? and email = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql); 
+	         pstmt.setString(1, paraMap.get("userid"));
+	         pstmt.setString(2, aes.encrypt(paraMap.get("email")) );
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         isUserExist = rs.next();
+	         
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      
+	      return isUserExist;   
+	}	// end of public boolean isUserExist(Map<String, String> paraMap)-----
 	
 }

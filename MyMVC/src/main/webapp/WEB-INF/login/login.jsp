@@ -21,7 +21,8 @@
 <c:if test="${sessionScope.login_user == null}">
 <%-- 또는
 	<c:if test="${empty sessionScope.login_user}">
- --%>
+	[주의] "" 안에 공백 주지 말기!!
+--%>
 	<form name="loginFrm" action="<%= ctx_Path%>/login/login.up" method="post">
       <table id="loginTbl">
           <thead>
@@ -57,6 +58,74 @@
           </tbody>
       </table>
    </form>
+   	<%-- ****** 아이디 찾기 Modal 시작 ****** --%>
+   	<%-- <div class="modal fade" id="userIdfind"> --%> 
+   	<%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
+    
+   	<%-- Bootstrap s20_modal --%>
+   	<div class="modal fade" id="userIdfind" data-backdrop="static">
+    <%-- 
+    	data-backdrop="static" 이 있으면 바깥을 눌렀을 때 창이 안 닫히고
+    	data-backdrop="static" 이 없으면 바깥을 눌렀을 때 창이 닫힌다.
+    --%>
+    
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h4 class="modal-title">아이디 찾기</h4>
+          <button type="button" class="close idFindClose" data-dismiss="modal"><%-- X 위치 --%>&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="idFind">
+             <iframe id="iframe_idFind" style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/idFind.up">
+             </iframe>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <%-- ****** 아이디 찾기 Modal 끝 ****** --%>
+<%--
+  ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+--%>
+  <%-- ****** 비밀번호 찾기 Modal 시작 ****** --%>
+  <div class="modal fade" id="passwdFind"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%>
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h4 class="modal-title">비밀번호 찾기</h4>
+          <button type="button" class="close passwdFindClose" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="pwFind">
+             <iframe style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/pwdFind.up">  
+             </iframe>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger passwdFindClose" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+  <%-- ****** 비밀번호 찾기 Modal 끝 ****** --%>
 </c:if>
 
 <%-- ========================== 로그인 성공한 경우 ========================== --%>
