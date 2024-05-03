@@ -204,13 +204,13 @@ public class MemberDAO_imple implements MemberDAO {
 			// + idle( 휴면유무 ) 컬럼 추가
 			String sql = " SELECT userid, name, coin, point , pwdchangegap "
 					+ " , nvl(lastlogingap, registerday) as lastlogingap "
-					+ " , idle "
+					+ " , idle, email, mobile, postcode, address, detailaddress, extraaddress "
 					+ " FROM "
 					+ " ( "
 					+ "    select userid, name, coin, point "
 					+ "			, trunc(months_between(sysdate, lastpwdchangedate)) as pwdchangegap "
 					+ " 		, trunc(months_between(sysdate, registerday),0) as registerday "
-					+ "			, idle "
+					+ "			, idle, email, mobile, postcode, address, detailaddress, extraaddress "
 					+ "    from tbl_member "
 					+ "    where status = 1 and userid = ? and pwd = ? "
 					+ " )M "
@@ -279,8 +279,18 @@ public class MemberDAO_imple implements MemberDAO {
 					}
 				}
 				
+				member.setEmail(aes.decrypt(rs.getString("email")));
+				member.setMobile(aes.decrypt(rs.getString("mobile")));
+				
+				member.setPostcode(rs.getString("postcode"));
+				member.setAddress(rs.getString("address"));
+				member.setDetailaddress(rs.getString("detailaddress"));
+				member.setExtraaddress(rs.getString("extraaddress"));
+				
 			}	// end of if(rs.next())---------------
 			
+		} catch(UnsupportedEncodingException | GeneralSecurityException e){
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -353,6 +363,137 @@ public class MemberDAO_imple implements MemberDAO {
 	      }
 	      
 	      return isUserExist;   
-	}	// end of public boolean isUserExist(Map<String, String> paraMap)-----
+	}	// end of public boolean isUserExist(Map<String, String> paraMap) throws SQLException-----
+
+///////////////////////////////////////////////////////////////////////////////////
+	
+	// 비밀번호 변경
+	@Override
+	public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();	// db 로 부터 땡겨오기
+			
+			String sql = " update tbl_member set pwd = ?, lastpwdchangedate = sysdate "
+					+ " where userid = ? "; 
+					
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, Sha256.encrypt(paraMap.get("new_pwd")));		// 단방향 암호화
+			pstmt.setString(2, paraMap.get("userid"));
+			
+	        result = pstmt.executeUpdate();		// return 타입은 int
+	        
+		} finally {
+			close();
+		}	// end of try~finally---------------------
+		
+		return result;
+		
+	}	// end of public int pwdUpdate(Map<String, String> paraMap) throws SQLException------------
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// === 회원의 코인 및 포인트 증가하기 === //
+	@Override
+	public int coinUpdateLoginUser(Map<String, String> paraMap) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();	// db 로 부터 땡겨오기
+			
+			String sql = " update tbl_member set coin = coin + ?, point = point + ? "
+					+ " where userid = ? "; 
+					
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(paraMap.get("coinmoney")));
+			pstmt.setInt(2, (int)(Integer.parseInt(paraMap.get("coinmoney"))*0.01));
+			pstmt.setString(3, paraMap.get("userid"));
+			
+	        result = pstmt.executeUpdate();		// return 타입은 int
+	        
+		} finally {
+			close();
+		}	// end of try~finally---------------------
+		
+		return result;
+		
+	}	// end of public int coinUpdateLoginUser(Map<String, String> paraMap) throws SQLException---
+
+////////////////////////////////////////////////////////////////
+	
+	// 정보 수정에서의 이메일 중복 체크
+	@Override
+	public boolean EmailDuplicateCheck(Map<String, String> paraMap) throws SQLException {
+		boolean isExists = false;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select email "
+					+ " from tbl_member "
+					+ " where userid != ? and email = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("userid"));
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")));
+			
+			rs = pstmt.executeQuery();
+			
+			isExists = rs.next();
+			// 행이 있으면(중복된 email) true,
+            // 행이 없으면(사용가능한 email) false
+			
+		} catch(UnsupportedEncodingException | GeneralSecurityException e){
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return isExists;
+	}	// end of public boolean EmailDuplicateCheck(Map<String, String> paraMap) throws SQLException---
+
+///////////////////////////////////////////////////////////////////////////////////////////
+	
+	// 회원정보 수정
+	@Override
+	public int updateInfo(Map<String, String> paraMap) throws SQLException {
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();	// db 로 부터 땡겨오기
+			
+			String sql = " update tbl_member set name = ?, email = ?, mobile = ? "
+					+ " , postcode = ?, address = ?, detailaddress = ?, extraaddress = ? "
+					+ " where userid = ? "; 
+					
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("name"));
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")));
+			pstmt.setString(3, aes.encrypt(paraMap.get("mobile")));
+			pstmt.setString(4, paraMap.get("postcode"));
+			pstmt.setString(5, paraMap.get("address"));
+			pstmt.setString(6, paraMap.get("detailaddress"));
+			pstmt.setString(7, paraMap.get("extraaddress"));
+			pstmt.setString(8, paraMap.get("userid"));
+			
+	        result = pstmt.executeUpdate();		// return 타입은 int
+	        
+		} catch(UnsupportedEncodingException | GeneralSecurityException e){
+			e.printStackTrace();
+		} finally {
+			close();
+		}	// end of try~finally---------------------
+		
+		return result;
+	}
+
+
+	
 	
 }

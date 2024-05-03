@@ -311,3 +311,25 @@ rollback;
 select userid
 from tbl_member
 where status = 1 and name = '양혜정' and email = 'Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As=';
+
+-- === 비밀번호 찾기(비밀번호 변경) === --
+update tbl_member set pwd = ?, lastpwdchangedate = sysdate
+where userid = ? ;
+
+-- === 회원테이블 === --
+select *
+from tbl_member
+order by registerday desc;
+
+-- === 회원의 코인 및 포인트 증가하기 === --
+update tbl_member set coin = coint + ?, point = point + ? 
+where userid = ? ;
+
+-- === 정보 수정에서의 이메일 중복 체크 === --
+select email
+from tbl_member
+where userid != 'jjoung' and email = 'Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As=';
+
+-- === 회원 정보 수정 === --
+update tbl_member set coin = coin + ?, point = point + ? 
+where userid = ? 

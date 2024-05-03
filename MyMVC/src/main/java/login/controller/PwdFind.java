@@ -7,6 +7,7 @@ import java.util.Random;
 import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import member.model.MemberDAO;
 import member.model.MemberDAO_imple;
 
@@ -86,7 +87,12 @@ public class PwdFind extends AbstractController {
 	            	
 	            	mail.send_certification_code(email, certification_code);
 	            	sendMailSuccess = true;		// 메일 전송 성공
-	            	System.out.println("전송성공");
+	            	
+	            	// === 세션 불러오기 === //
+	            	HttpSession session = request.getSession();
+	            	session.setAttribute("certification_code", certification_code);
+	            	// 발급한 인증코드를 세션에 저장 (다른 클래스나 jsp 파일에서 사용 가능)
+	            	
 	            }catch(Exception e) {
 	            	// 메일 전송이 실패한 경우 
 	                e.printStackTrace();
@@ -96,9 +102,9 @@ public class PwdFind extends AbstractController {
 			}	// end of if(isUserExist)------------------
 			
 		///////////////////////////////////////////////////////////////
-			// 아이디와 이메일을 인증번호 발송 후에도 유지하고 싶을 시 setAttribute 해주기
-			// 현재 인증코드가 어디로 발송된지 표시하기 위해 email 만 setAttribute 해준다.
-			// request.setAttribute("userid", userid);
+			// DB 에 저장할 위치 파악을 위해 userid setAttribute 해주기
+			// 현재 인증코드가 어디로 발송된지 표시하기 위해 email setAttribute 해준다.
+			request.setAttribute("userid", userid);
 			request.setAttribute("email", email);
 			request.setAttribute("isUserExist", isUserExist);
 			request.setAttribute("sendMailSuccess", sendMailSuccess);

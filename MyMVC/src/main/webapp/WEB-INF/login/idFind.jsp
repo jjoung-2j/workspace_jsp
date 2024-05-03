@@ -27,7 +27,7 @@ $(document).ready(function(){
 	
 	const method = "${requestScope.method}";
 	
-	console.log("~~ 확인용 method : " + method);
+	// console.log("~~ 확인용 method : " + method);
 	/*
 		~~ 확인용 method : GET
 		

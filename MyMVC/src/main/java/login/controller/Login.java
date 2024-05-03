@@ -133,12 +133,12 @@ public class Login extends AbstractController {
 			// System.out.println("확인용 => 로그인 실패ㅠㅠ");
 			
 			String message = "로그인 실패";
-	        String location = "javascript:history.back()";	// 이전 페이지 이동
+	        String location = request.getContextPath() + "/index.up";	// 이전 페이지 이동
 	         
 	        request.setAttribute("message", message);
 	        request.setAttribute("location", location);
-	         
-	        super.setRedirect(false); 
+	        
+	        super.setRedirect(false);
 	        super.setViewPage("/WEB-INF/msg.jsp");
 	        
 		}	// end of if~else------------------------

@@ -16,7 +16,35 @@
 <link rel="stylesheet" type="text/css" href="<%= ctx_Path%>/css/login/login.css" />
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctx_Path%>/js/login/login.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	//=== 로그인을 하지 않은 상태일 때 
+	//     로컬스토리지(localStorage)에 저장된 key가 'saveid' 인 userid 값을 불러와서 
+	//     input 태그 userid 에 넣어주기 ===
+	if(${empty sessionScope.login_user}){
+		
+		const loginUserid = localStorage.getItem('saveid');
+		// const loginPwd = localStorage.getItem('savepwd');
+		
+		console.log(loginUserid);
+		if(loginUserid != null){
+			$("input#loginUserid").val(loginUserid);
+			$("input:checkbox[id='saveid']").prop("checked", true);
+		}
+		<%-- 
+		보안상 민감한 데이터는 로컬스토리지 또는 세션스토리지에 저장시켜두면 안된다.!!!
+		현재 암호저장 체크박스를 주석문 처리했다.
+		--%>
+		/*
+		if(loginPwd != null){
+			$("input#loginPwd").val(loginPwd);
+			$("input:checkbox[id='savepwd']".prop("checked", true);
+		}
+		*/
+	}	// end of if------------
+	
+})	// end of $(document).ready(function(){})----------------
+</script>
 <%-- === 로그인을 하기 위한 폼을 생성 === --%>
 <c:if test="${sessionScope.login_user == null}">
 <%-- 또는
@@ -38,7 +66,8 @@
               </tr>
               <tr>
                   <td>암호</td>
-                  <td><input type="password" name="pwd" id="loginPwd" size="20" /></td>
+                  <td><input type="password" name="pwd" id="loginPwd" size="20" autoComplete="off"/></td>
+                  <%-- autoComplete="off" => password 자동입력 막기--%>
               </tr>
               
               <%-- ==== 아이디 찾기, 비밀번호 찾기 ==== --%>
@@ -52,6 +81,9 @@
               <tr>
                   <td colspan="2">
                      <input type="checkbox" id="saveid" />&nbsp;<label for="saveid">아이디저장</label> 
+                     <%-- 보안상 민감한 데이터는 로컬스토리지 또는 세션스토리지에 저장시켜두면 안된다.!!!
+                     <input type="checkbox" id="savepwd" />&nbsp;<label for="savepwd">암호저장</label> 
+                     --%>
                      <button type="button" id="btnSubmit" class="btn btn-primary btn-sm ml-3">로그인</button> 
                   </td>
               </tr>
@@ -112,7 +144,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div id="pwFind">
-             <iframe style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/pwdFind.up">  
+             <iframe id="iframe_pwdFind" style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/pwdFind.up">  
              </iframe>
           </div>
         </div>

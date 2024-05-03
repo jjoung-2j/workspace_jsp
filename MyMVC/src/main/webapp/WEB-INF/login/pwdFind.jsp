@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 	const method = "${requestScope.method}";
 	
-	console.log("~~ 확인용 method : " + method);
+	// console.log("~~ 확인용 method : " + method);
 	/*
 		~~ 확인용 method : GET
 		
@@ -39,8 +39,14 @@ $(document).ready(function(){
 		$("div#div_findResult").hide();
 	}
 	if(method == "POST"){
-		// $("input:text[name='userid']").val("${requestScope.userid}");
-		// $("input:text[name='email']").val("${requestScope.email}");
+		$("input:text[name='userid']").val("${requestScope.userid}");
+		$("input:text[name='email']").val("${requestScope.email}");
+		
+		// === 올바르게 입력하여, 인증코드 보낼 시 찾기 버튼 숨기기 === //
+		if(${requestScope.isUserExist && requestScope.sendMailSuccess}){
+			$("button.btn-success").hide();
+		}
+		
 	}
 	
 	$("button.btn-success").click(function(){
@@ -53,6 +59,28 @@ $(document).ready(function(){
 			goFind();
 		}
 	})	// end of $("input:text[name='email']").binde("keydown", function(e){})-----
+	
+	// === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
+	$("button.btn-info").click(function(){
+		
+		const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim();
+		
+		if(input_confirmCode == ""){
+			alert("인증코드를 입력하세요!!")
+			return;		// 종료
+		}
+		
+		<%-- 인증하기 form --%>
+		const frm = document.verifyCertificationFrm;
+		frm.userCertificationCode.value = input_confirmCode;
+		frm.userid.value = $("input:text[name='userid']").val().trim();
+		
+		frm.action = "<%= ctxPath%>/login/verifyCertification.up";
+		frm.method = "post";
+		frm.submit();
+		
+	})	// end of $("button.btn-info").click(function(){})----------
+	// === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //	
 	
 })	// end of $(document).ready(function(){})----------------
 
@@ -108,7 +136,7 @@ function goFind(){
    
    	<c:if test="${requestScope.isUserExist == true && requestScope.sendMailSuccess == true}">
    		<span style="font-size: 10pt;">
-           	인증코드가 ${requestScope.email}로 발송되었습니다.<br>
+           	인증코드가 <span style="color: blue;">${requestScope.email}</span>로 발송되었습니다.<br>
            	인증코드를 입력해주세요
        	</span>
        	<br>
@@ -121,3 +149,9 @@ function goFind(){
     	<span style="color: red;">메일발송이 실패했습니다</span>
 	</c:if>
 </div>
+
+<%-- 인증하기 form --%>
+<form name="verifyCertificationFrm">
+	<input type="hidden" name="userCertificationCode" />	<%-- 인증코드 --%>
+	<input type="hidden" name="userid"/>	<%-- DB WHERE 절에 활용될 아이디 --%>
+</form>

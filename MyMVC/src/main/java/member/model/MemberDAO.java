@@ -24,5 +24,17 @@ public interface MemberDAO {
 
 	// 비밀번호 찾기(아이디, 이메일을 입력받아서 해당 사용자가 존재하는지 유무를 알려준다.)
 	boolean isUserExist(Map<String, String> paraMap)throws SQLException;
+
+	// 비밀번호 변경
+	int pwdUpdate(Map<String, String> paraMap)throws SQLException;
+
+	// 회원의 코인 및 포인트 증가하기
+	int coinUpdateLoginUser(Map<String, String> paraMap)throws SQLException;
+
+	// 정보 수정에서의 이메일 중복 체크
+	boolean EmailDuplicateCheck(Map<String, String> paraMap)throws SQLException;
+
+	// 회원정보 수정
+	int updateInfo(Map<String, String> paraMap)throws SQLException;
 	
 }

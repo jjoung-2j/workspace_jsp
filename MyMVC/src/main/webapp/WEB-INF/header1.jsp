@@ -44,9 +44,9 @@
       <a class="navbar-brand" href="<%= ctxPath %>/index.up" style="margin-right: 10%;"><img src="<%= ctxPath %>/images/sist_logo.png" /></a>
       
       <%-- 아코디언 같은 Navigation Bar 만들기 --%>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
          <span class="navbar-toggler-icon"></span>
-       </button>
+      </button>
       
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav" style="font-size: 16pt;">
@@ -82,6 +82,13 @@
      <div class="row">
        <div class="col-md-3" id="sideinfo">
          <div style="height: 200px; text-align: left; padding: 20px;">
+            
+            <%-- 유트브 넣기 header1.jsp 에만 있음 --%>
+       		<div class="row">
+         		<div class="col-md-8 offset-md-2 mt-3 embed-responsive embed-responsive-16by9">
+               		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E0W5sJZ2d64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         		</div>
+       		</div>
             
             <%-- === 로그인 처리하기 === --%>
             <%@ include file="/WEB-INF/login/login.jsp" %>
