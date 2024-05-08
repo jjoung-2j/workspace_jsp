@@ -41,9 +41,18 @@
 	==> 이렇게 하면 캐시에서 현재 페이지의 파일들을 항상 우선적으로 찾는다.
 */
 
-
+/*
 	// opener.location.reload(true); // 부모창 새로고침
+	// 또는
 	opener.history.go(0);  // 부모창 새로고침  
-
- 	self.close();
+ 	
+	self.close();
+*/	
+	
+	if(${requestScope.memberEditEnd == true}){
+	// 또는
+	// if(${requestScope.memberEditEnd}){
+		opener.history.go(0);  // 부모창 새로고침  
+		self.close();
+	}
 </script>
