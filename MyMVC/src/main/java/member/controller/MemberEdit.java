@@ -34,7 +34,6 @@ public class MemberEdit extends AbstractController {
 				
 				String userid = request.getParameter("userid");
 				
-				
 				login_user = (MemberVO) session.getAttribute("login_user");
 				
 				if(login_user.getUserid().equals(userid)) {		// 로그인한 사용자가 자신의 정보을 수정하는 경우 

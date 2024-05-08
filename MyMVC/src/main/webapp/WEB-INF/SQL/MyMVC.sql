@@ -397,7 +397,7 @@ from tbl_member
 order by userid asc;
 -- 210
 
-/* 프로시저 잘못 작성함 
+/* 프로시저 잘못 작성함(이메일 수정) 
 drop procedure pcd_member_insert;
 
 update tbl_member set email = 'Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As='
@@ -413,3 +413,124 @@ select userid, name, email, gender, to_char(registerday,'yyyy-mm-dd hh24:mi:ss')
 from tbl_member
 where userid != 'admin'
 order by registerday desc;
+
+-- === 목록 검색 === --
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and name like '%유%'
+order by registerday desc;
+
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and name like '%'||'유'||'%'
+order by registerday desc;
+
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and ? like '%?%'
+order by registerday desc;
+
+-- === 목록 검색(암호화된 이메일) === --
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and email = 'Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As='
+order by registerday desc;
+
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and ? = ?
+order by registerday desc;
+
+-- === like 를 사용해도 결과값이 추출된다. === --
+select userid, name, email, gender, registerday
+from tbl_member
+where userid != 'admin' and email like '%Si7+V7mpL7xeaAxJvSspEqGgD26M0NSs5XbxyUYF4As=%'
+order by registerday desc;
+
+-- === 페이징 처리 공식 === --
+-- where RNO between (조회하고자하는페이지번호 * 한페이지당보여줄행의개수) - (한페이지당보여줄행의개수 - 1) and (조회하고자하는페이지번호 * 한페이지당보여줄행의개수);
+
+-- === 전체 회원 페이징 처리(검색이 없는 경우) === --
+/*
+    한페이지에 10명
+    where RNO between ( 1 * 10 ) - ( 10 - 1 ) and ( 1 * 10 )
+    where RNO between 1 and 10
+*/
+SELECT rno, userid, name, email, gender
+FROM
+(
+    select rownum as rno
+        , userid, name, email, gender
+    from
+    (
+        select userid, name, email, gender
+        from tbl_member
+        order by registerday desc
+    ) V
+) T
+WHERE rno between 1 and 10;  -- 1페이지
+--------------------------------------------
+SELECT rno, userid, name, email, gender
+FROM
+(
+    select rownum as rno
+        , userid, name, email, gender
+    from
+    (
+        select userid, name, email, gender
+        from tbl_member
+        order by registerday desc
+    ) V
+) T
+WHERE rno between 11 and 20;  -- 2페이지
+---------------------------------------------
+SELECT rno, userid, name, email, gender
+FROM
+(
+    select rownum as rno
+        , userid, name, email, gender
+    from
+    (
+        select userid, name, email, gender
+        from tbl_member
+        order by registerday desc
+    ) V
+) T
+WHERE rno between 201 and 210;  -- 21페이지
+-- 1 2 3 4 5 ...... 20 21
+------------------------------------------------------------------
+-- === 관리자를 제외한 모든 회원 === --
+SELECT rno, userid, name, email, gender
+FROM
+(
+    select rownum as rno
+        , userid, name, email, gender
+    from
+    (
+        select userid, name, email, gender
+        from tbl_member
+        where userid!= 'admin'
+        order by registerday desc
+    ) V
+) T;
+----------------------------------------------
+SELECT rno, userid, name, email, gender
+FROM
+(
+    select rownum as rno
+        , userid, name, email, gender
+    from
+    (
+        select userid, name, email, gender
+        from tbl_member
+        where userid != 'admin' and name like '%유%'
+        order by registerday desc
+    ) V
+) T
+WHERE rno between 101 and 110;  -- 1페이지
+-- 1 2 3 4 5 ...... 10 11
+
+-- === 관리자 제외한 회원의 총개수 알아오기 === --
+select count(*)
+from tbl_member 
+where userid != 'admin' 

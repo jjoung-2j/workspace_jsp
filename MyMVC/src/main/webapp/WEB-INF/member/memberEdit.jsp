@@ -59,6 +59,8 @@
                 <tr>
                     <td>성명&nbsp;<span class="star">*</span></td>
                     <td>
+                       <%-- <input type="hidden" name="userid" value="${sessionScope.login_user.userid}" /> --%>
+                       <input type="hidden" name="userid" value="${sessionScope.login_user.userid}" />
                        <input type="text" name="name" id="name" maxlength="30" class="requiredInfo" value="${requestScope.name}"/>
                        <span class="error">성명은 필수입력 사항입니다.</span>
                     </td>
@@ -69,6 +71,8 @@
                     <td>
                        <input type="password" name="pwd" id="pwd" maxlength="15" class="requiredInfo" />
                        <span class="error">암호는 영문자,숫자,특수기호가 혼합된 8~15 글자로 입력하세요.</span>
+                       <%-- <span id="duplicate_pwd" style="color: red;"></span> --%>
+                       <span id="duplicate_pwd" style="color: red;"></span>
                     </td>
                 </tr>
                 

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+table#memberTbl {
+   width: 80%;
+   margin: 0 auto;
+}
+
+table#memberTbl th {
+   text-align: center;
+   font-size: 14pt;
+}
+
+table#memberTbl tr.memberInfo:hover {
+   background-color: #e6ffe6;
+   cursor: pointer;
+}
+
+form[name="member_search_frm"] {
+   border: solid 0px red;
+   width: 80%;
+   margin: 0 auto 3% auto;
+}
+
+form[name="member_search_frm"] button.btn-secondary {
+   margin-left: 2%;
+   margin-right: 32%;
+}
+
+div#pageBar {
+   border: solid 0px red;
+   width: 80%;
+   margin: 3% auto 0 auto;
+   display: flex;
+}
+
+div#pageBar > nav {
+   margin: auto;
+}

@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.naming.Context;
@@ -493,7 +495,305 @@ public class MemberDAO_imple implements MemberDAO {
 		return result;
 	}
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 	
+	// 비밀번호 변경시 현재 사용중인 비밀번호인지 아닌지 알아오기(현재 사용중인 비밀번호 이라면 true, 새로운 비밀번호이라면 false)
+	@Override
+	public boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException {
+		
+	      boolean isExists = false;
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pwd "
+	                  + " from tbl_member "
+	                  + " where userid = ? and pwd = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql); 
+	         pstmt.setString(1, paraMap.get("userid"));
+	         pstmt.setString(2, Sha256.encrypt(paraMap.get("new_pwd")));
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         isExists = rs.next(); // 행이 있으면(현재 사용중인 비밀번호) true,
+	                               // 행이 없으면(새로운 비밀번호) false
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return isExists;            
+		      
+	}	// end of public boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException-------
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// 회원의 개인 정보 변경하기 
+	@Override
+	public int updateMember(MemberVO member) throws SQLException {
+
+		int result = 0;
+      
+		try {
+			conn = ds.getConnection();
+         
+			String sql = " update tbl_member set name = ? "
+	                  + "                     , pwd = ? "
+	                  + "                     , email = ? "
+	                  + "                     , mobile = ? "
+	                  + "                     , postcode = ? " 
+	                  + "                     , address = ? "
+	                  + "                     , detailaddress = ? "
+	                  + "                     , extraaddress = ? "
+	                  + "                     , lastpwdchangedate = sysdate "
+	                  + " where userid = ? ";
+                  
+			pstmt = conn.prepareStatement(sql);
+         
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, Sha256.encrypt(member.getPwd()) ); // 암호를 SHA256 알고리즘으로 단방향 암호화 시킨다.
+			pstmt.setString(3, aes.encrypt(member.getEmail()) );  // 이메일을 AES256 알고리즘으로 양방향 암호화 시킨다. 
+			pstmt.setString(4, aes.encrypt(member.getMobile()) ); // 휴대폰번호를 AES256 알고리즘으로 양방향 암호화 시킨다. 
+			pstmt.setString(5, member.getPostcode());
+			pstmt.setString(6, member.getAddress());
+			pstmt.setString(7, member.getDetailaddress());
+			pstmt.setString(8, member.getExtraaddress());
+			pstmt.setString(9, member.getUserid());
+                  
+			result = pstmt.executeUpdate();
+         
+		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+      
+		return result;      
+      
+   }// end of public int updateMember(MemberVO member) throws SQLException---------
+
+//////////////////////////////////////////////////////////////////////////
+	
+	// 페이징 처리를 안한 모든 회원 또는 검색한 회원 목록 보여주기
+	@Override
+	public List<MemberVO> select_Member_nopaging(Map<String,String> paraMap) throws SQLException {
+		
+		// 아이디		회원명	이메일	성별
+		
+		List<MemberVO> memberList = new ArrayList<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         /* 관리자를 제외한 모든 회원 검색
+	         String sql = "select userid, name, email, gender "
+	         		+ " from tbl_member "
+	         		+ " where userid != 'admin' "
+	         		+ " order by registerday desc ";
+	         */
+	         
+	         String sql = "select userid, name, email, gender "
+	         		+ " from tbl_member "
+	         		+ " where userid != 'admin' ";
+	         		
+	         // 검색 대상에 따라 where 절 추가문을 다르게 하기
+	         String colname = paraMap.get("searchType");
+	         String searchWord = paraMap.get("searchWord");
+	         
+	         if(colname != null && !colname.trim().isEmpty()
+		        && searchWord != null && !searchWord.trim().isEmpty()) {
+		         
+	        	 if("email".equals(paraMap.get("searchType"))){		// 검색 대상이 이메일 인 경우
+		        	 
+	        		 searchWord = aes.encrypt(paraMap.get("searchWord"));
+		         }
+		         
+		         // 컬럼명과 테이블명은 위치홀더(?)로 사용하면 꽝!!! 이다.
+		         // 위치홀더(?)로 들어오는 것은 컬럼명과 테이블명이 아닌 오로지 데이터값만 들어온다.!!!!
+		         sql += " and " + colname + " like '%' || ? || '%' ";
+	         
+		         sql += " order by registerday desc ";
+		         
+		         pstmt = conn.prepareStatement(sql); 
+		         
+		         pstmt.setString(1, searchWord);
+	         }
+	         else {
+	        	 sql += " order by registerday desc ";
+		         
+		         pstmt = conn.prepareStatement(sql);
+	         }
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	        	 MemberVO member = new MemberVO();
+	        	 
+	        	 member.setUserid(rs.getString("userid"));
+	        	 member.setName(rs.getString("name"));
+	        	 member.setEmail(aes.decrypt(rs.getString("email")));
+	        	 member.setGender(rs.getString("gender"));
+	         
+	        	 memberList.add(member);
+	         }
+	         
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	    	  e.printStackTrace();
+	      } finally {
+	    	  close();
+	      }
+		return memberList;
+		
+	}	// end of public List<MemberVO> select_Member_nopaging() throws SQLException------
+
+/////////////////////////////////////////////////////////////////////////////////////////////	
+
+	// 페이징 처리를 한 모든 회원 또는 검색한 회원 목록 보여주기
+	@Override
+	public List<MemberVO> select_Member_paging(Map<String, String> paraMap) throws SQLException {
+		
+		List<MemberVO> memberList = new ArrayList<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " SELECT rno, userid, name, email, gender "
+	         		+ " FROM "
+	         		+ " ( "
+	         		+ "    select rownum as rno "
+	         		+ "        , userid, name, email, gender "
+	         		+ "    from "
+	         		+ "    ( "
+	         		+ "        select userid, name, email, gender "
+	         		+ "        from tbl_member "
+	         		+ "        where userid != 'admin' ";
+	         		
+	         // 검색 대상에 따라 where 절 추가문을 다르게 하기
+	         String colname = paraMap.get("searchType");
+	         String searchWord = paraMap.get("searchWord");
+	         int currentShowPageNo = Integer.parseInt(paraMap.get("currentShowPageNo"));
+	         int sizePerPage = Integer.parseInt(paraMap.get("sizePerPage"));
+	         
+	         if(colname != null && !colname.trim().isEmpty()
+		        && searchWord != null && !searchWord.trim().isEmpty()) {	// 검색이 있는 경우
+		         
+	        	 if("email".equals(paraMap.get("searchType"))){		// 검색 대상이 이메일 인 경우
+		        	 
+	        		 searchWord = aes.encrypt(paraMap.get("searchWord"));
+		         }
+		         
+		         // 컬럼명과 테이블명은 위치홀더(?)로 사용하면 꽝!!! 이다.
+		         // 위치홀더(?)로 들어오는 것은 컬럼명과 테이블명이 아닌 오로지 데이터값만 들어온다.!!!!
+		         sql += " and " + colname + " like '%' || ? || '%' ";
+	         
+		         sql += " order by registerday desc "
+	        	 		+ "    ) V "
+	        	 		+ " ) T "
+	        	 		+ " WHERE rno between ? and ? ";
+		        
+		         /*
+		         	=== 페이징 처리 공식 ===
+					where RNO between (조회하고자하는페이지번호 * 한페이지당보여줄행의개수) - (한페이지당보여줄행의개수 - 1) and (조회하고자하는페이지번호 * 한페이지당보여줄행의개수);
+		         */
+		         
+		         pstmt = conn.prepareStatement(sql); 
+		         
+		         pstmt.setString(1, searchWord);
+		         pstmt.setInt(2, (currentShowPageNo * sizePerPage) - (sizePerPage - 1));
+		         pstmt.setInt(3, (currentShowPageNo * sizePerPage));
+		         
+	         }
+	         else {		// 검색이 없는 경우
+	        	 sql += " order by registerday desc "
+	        	 		+ "    ) V "
+	        	 		+ " ) T "
+	        	 		+ " WHERE rno between ? and ? ";
+		         
+		         pstmt = conn.prepareStatement(sql);
+		         
+		         pstmt.setInt(1, (currentShowPageNo * sizePerPage) - (sizePerPage - 1));
+		         pstmt.setInt(2, (currentShowPageNo * sizePerPage));
+		         
+	         }	// end of if~else(검색유무)--------------
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	        	 MemberVO member = new MemberVO();
+	        	 
+	        	 member.setUserid(rs.getString("userid"));
+	        	 member.setName(rs.getString("name"));
+	        	 member.setEmail(aes.decrypt(rs.getString("email")));
+	        	 member.setGender(rs.getString("gender"));
+	         
+	        	 memberList.add(member);
+	         }
+	         
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	    	  e.printStackTrace();
+	      } finally {
+	    	  close();
+	      }
+		return memberList;
+		
+	}	// end of public List<MemberVO> select_Member_paging(Map<String, String> paraMap) throws SQLException------
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// === 검색이 있는 또는 검색이 없는 회원의 총개수 알아오기 === //
+	@Override
+	public int getTotalMemberCount(Map<String, String> paraMap) throws SQLException {
+		
+		int totalMemberCount = 0;
+		
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select count(*) "
+	         		+ " from tbl_member "
+	         		+ " where userid != 'admin' ";
+	         		
+	         // 검색 대상에 따라 where 절 추가문을 다르게 하기
+	         String colname = paraMap.get("searchType");
+	         String searchWord = paraMap.get("searchWord");
+	         
+	         if(colname != null && !colname.trim().isEmpty()
+		        && searchWord != null && !searchWord.trim().isEmpty()) {	// 검색이 있는 경우
+		         
+	        	 if("email".equals(paraMap.get("searchType"))){		// 검색 대상이 이메일 인 경우
+		        	 
+	        		 searchWord = aes.encrypt(paraMap.get("searchWord"));
+		         }
+		         
+		         // 컬럼명과 테이블명은 위치홀더(?)로 사용하면 꽝!!! 이다.
+		         // 위치홀더(?)로 들어오는 것은 컬럼명과 테이블명이 아닌 오로지 데이터값만 들어온다.!!!!
+		         sql += " and " + colname + " like '%' || ? || '%' ";
+	         
+		         pstmt = conn.prepareStatement(sql); 
+		         
+		         pstmt.setString(1, searchWord);
+		         
+		         
+	         }
+	         else {		// 검색이 없는 경우
+	        	 
+		         pstmt = conn.prepareStatement(sql);
+		         
+	         }	// end of if~else(검색유무)--------------
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         rs.next(); // 존재하지 않는 사람도 검색할 수 있기 때문에 if 문 사용 X
+	         
+	         totalMemberCount = rs.getInt(1);	// 첫번째 컬럼
+	         
+	      } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	    	  e.printStackTrace();
+	      } finally {
+	    	  close();
+	      }
+		return totalMemberCount;
+		
+	}	// end of public int getTotalMemberCount(Map<String, String> paraMap) throws SQLException---------------
 	
 }

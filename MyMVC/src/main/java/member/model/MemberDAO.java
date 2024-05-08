@@ -1,6 +1,7 @@
 package member.model;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import member.domain.MemberVO;
@@ -36,5 +37,20 @@ public interface MemberDAO {
 
 	// 회원정보 수정
 	int updateInfo(Map<String, String> paraMap)throws SQLException;
+	
+	// 비밀번호 변경시 현재 사용중인 비밀번호인지 아닌지 알아오기(현재 사용중인 비밀번호 이라면 true, 새로운 비밀번호이라면 false)  
+	boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException;
+	   
+	// 회원의 개인 정보 변경하기 (비밀번호도 함께 변경)
+	int updateMember(MemberVO member) throws SQLException;
+
+	// 페이징 처리를 안한 모든 회원 또는 검색한 회원 목록 보여주기
+	List<MemberVO> select_Member_nopaging(Map<String,String> paraMap) throws SQLException;
+
+	// 페이징 처리를 한 모든 회원 또는 검색한 회원 목록 보여주기
+	List<MemberVO> select_Member_paging(Map<String, String> paraMap) throws SQLException;
+
+	// === 검색이 있는 또는 검색이 없는 회원의 총개수 알아오기 === //
+	int getTotalMemberCount(Map<String, String> paraMap) throws SQLException;  
 	
 }

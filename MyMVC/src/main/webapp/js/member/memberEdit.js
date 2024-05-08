@@ -1,9 +1,6 @@
 // "이메일 중복확인" 를 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
 let b_emailcheck_click = false;
 
-// "우편번호찾기" 를 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
-let b_zipcodeSearch_click = false;
-
 $(document).ready(function(){
 
 	
@@ -56,8 +53,6 @@ $(document).ready(function(){
     $("input#pwd").blur(e => {
 
         // 숫자/문자/특수문자 포함 형태의 8~15자리 이내의 암호 정규표현식 객체 생성
-        // const regExp_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g;
-        // 또는
         const regExp_pwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g);
 
         const bool = regExp_pwd.test($(e.target).val());
@@ -306,9 +301,6 @@ $(document).ready(function(){
     // === "우편번호찾기"를 클릭했을 때 이벤트 처리하기 === //
    $("img#zipcodeSearch").click(function(){
       
-        b_zipcodeSearch_click = true;   // 맨위에 선언
-        // "우편번호찾기" 를 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도  
-    
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -479,18 +471,6 @@ function goMemberEdit(){
     }
     // **** 이메일 중복확인" 을 클릭했는지 검사하기 끝 **** //
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    // *** "우편번호찾기" 를 클릭했는지 검사하기 시작 *** //
-    if(!b_zipcodeSearch_click){
-        alert("우편번호찾기를 클릭하셔서 우편번호를 입력하셔야 합니다.");
-        return; // goRegister() 함수를 종료한다.    
-        // => button의 type 이 submit 이 아닌 button 타입이므로 return false 가 아니다.
-    }
-    // *** "우편번호찾기" 를 클릭했는지 검사하기 끝 *** //
-
     //////////////////////////////////////////////////////////////////////////////////
     
     // *** 우편번호 및 주소에 값을 입력했는지 검사하기 시작 *** //
@@ -505,9 +485,57 @@ function goMemberEdit(){
     }
     // *** 우편번호 및 주소에 값을 입력했는지 검사하기 끝 *** //
 
+	//////////////////////////////////////////////////////////
+
+	// 변경된 암호가 현재 사용중인 암호이라면 현재 사용중인 암호가 아닌 새로운 암호로 입력해야 한다.!!! 
+	let isNewPwd = true;
+	
+	$.ajax({
+			 url:"duplicatePwdCheck.up",
+			 data:{"new_pwd":$("input:password[name='pwd']").val()
+			      ,"userid":$("input:hidden[name='userid']").val()}, // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다. 
+			 type:"post",  //  type 을 생략하면 type:"get" 이다.
+			 
+			 async:false,  // !!!!! 반드시 동기방식 이어야 한다 !!!!! 
+			               // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
+         		           // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.   
+			 
+			 dataType:"json", // Javascript Standard Object Notation.  dataType은 /MyMVC/member/emailDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
+         		              // 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
+         		              // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다. 
+			  
+			 success:function(json){
+				 
+				 if(json.isExists) {
+					 // 입력한 암호가 이미 사용중이라면
+					 $("span#duplicate_pwd").html("현재 사용중인 비밀번호로 비밀번호 변경은 불가합니다."); 
+					 isNewPwd = false;
+				 }
+				 
+			 },
+			 
+			 error: function(request, status, error){
+					alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			 }
+		 }); 
+	
+	//////////////////////////////////////////////////////////
+	
+	if(isNewPwd) { // 변경한 암호가 새로운 암호일 경우
+        // alert("DB에 사용자 정보를 수정하러 간다.")
+		
+        const frm = document.memberEditFrm;
+		frm.action = "memberEditEnd.up";
+		frm.method = "post";
+		frm.submit();
+        
+	}
+
+/*
+    // 비밀번호 변경 하지 않을 경우
     const frm = document.memberEditFrm;
     frm.action = "memberEdit.up";
     frm.method = "post";
     frm.submit();
-
+*/
 }   // end of function goMemberEdit()------------
