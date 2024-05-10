@@ -49,7 +49,7 @@ public class Login extends AbstractController {
 		
 		// System.out.println("확인용 userid : " + userid);
 		// System.out.println("확인용 pwd : " + pwd);
-		// ㅇSystem.out.println("확인용 clientip : " + clientip);
+		// System.out.println("확인용 clientip : " + clientip);
 		
 		Map<String, String> paraMap = new HashMap<>();
 		paraMap.put("userid", userid);
