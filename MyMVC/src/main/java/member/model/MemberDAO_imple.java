@@ -795,5 +795,112 @@ public class MemberDAO_imple implements MemberDAO {
 		return totalMemberCount;
 		
 	}	// end of public int getTotalMemberCount(Map<String, String> paraMap) throws SQLException---------------
+
+//////////////////////////////////////////////////////////////////////////////////////////
+	
+	// === 페이징 처리를 위한 검색이 있는 또는 검색이 없는 회원에 대한 총 페이지 수 알아오기 === //
+	@Override
+	public int getTotalPage(Map<String, String> paraMap) throws SQLException {
+		
+		int TotalPage = 0;
+        
+        try {
+           conn = ds.getConnection();
+           
+           String sql = " select ceil(count(*)/?) "
+                      + " from tbl_member "
+                      + " where userid != 'admin' ";
+           
+                    
+           String colname =  paraMap.get("searchType");
+           String searchWord =  paraMap.get("searchWord");
+           
+           if("email".equals(colname) ) {
+              // 검색대상이 email인 경우
+              searchWord =  aes.encrypt(searchWord);  
+           }
+           
+           if( (colname != null && !colname.trim().isEmpty()) &&
+              (searchWord != null && !searchWord.trim().isEmpty()) ) {
+              
+              sql += " and "+colname+" like '%'|| ? ||'%' ";
+              // 컬럼명과 테이블명은 위치홀더(?)로 사용하면 꽝!!! 이다.
+              // 위치홀더(?)로 들어오는 것은 컬럼명과 테이블명이 아닌 오로지 데이터값만 들어온다.!!!!
+           }
+           
+           pstmt = conn.prepareStatement(sql);
+           
+           pstmt.setInt(1,  Integer.parseInt(paraMap.get("sizePerPage")) );
+           
+           if( (colname != null && !colname.trim().isEmpty()) &&
+                  (searchWord != null && !searchWord.trim().isEmpty()) ) {
+              // 검색이 있는 경우
+              pstmt.setString(2, searchWord);
+           }
+           
+           rs = pstmt.executeQuery();
+           
+           rs.next();
+           TotalPage = rs.getInt(1); //count(*)이 첫번째 컬럼이므로
+           
+        } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+           e.printStackTrace();
+        } finally {
+           close();
+        }
+        
+        return TotalPage;
+
+	}	// end of public int getTotalPage(Map<String, String> paraMap) throws SQLException----------
+
+////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// === 입력받은 userid 를 가지고 한명의 회원정보를 리턴시켜주는 메소드 === //
+	@Override
+	public MemberVO selectOneMember(String userid) throws SQLException {
+
+		MemberVO member = null;
+	      
+	    try {
+	    	conn = ds.getConnection();
+	         
+	        String sql =  " select userid, name, email, mobile, postcode, address, detailaddress, extraaddress, gender "
+	                  + "      , birthday, coin, point, to_char(registerday, 'yyyy-mm-dd') AS registerday "
+	                  + " from tbl_member "
+	                  + " where status = 1 and userid = ? ";
+	                     
+	        pstmt = conn.prepareStatement(sql);
+	         
+	        pstmt.setString(1, userid);
+	         
+	        rs = pstmt.executeQuery();
+	         
+	        if(rs.next()) {
+	        	member = new MemberVO();
+	            
+	            member.setUserid(rs.getString(1));
+	            member.setName(rs.getString(2));
+	            member.setEmail( aes.decrypt(rs.getString(3)) );  // 복호화
+	            member.setMobile( aes.decrypt(rs.getString(4)) ); // 복호화
+	            member.setPostcode(rs.getString(5));
+	            member.setAddress(rs.getString(6));
+	            member.setDetailaddress(rs.getString(7));
+	            member.setExtraaddress(rs.getString(8));
+	            member.setGender(rs.getString(9));
+	            member.setBirthday(rs.getString(10));
+	            member.setCoin(rs.getInt(11));
+	            member.setPoint(rs.getInt(12));
+	            member.setRegisterday(rs.getString(13));
+	        } // end of if(rs.next())-------------------
+	         
+	     } catch(GeneralSecurityException | UnsupportedEncodingException e) {
+	    	 e.printStackTrace();
+	     } finally {
+	         close();
+	     }
+	      
+	     return member;
+		
+	}	// end of public MemberVO selectOneMember(String userid) throws SQLException-------
 	
 }

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+div#container{
+	width: 80%;
+	margin-top: 100px;
+}
+
+div#container > div > div#sidebardiv{
+	border:solid 1px blue;
+	text-align:center;
+}
+
+div#sidebar{
+	border-radius: 10px 10px;
+	margin-left:30%;
+}
+
+div#sidebar > div#mypage{
+	background-color:#81BEF7;
+	border: solid 2px #063460;
+}
+
+div#sidebar > div#mypage > div{
+	background-color:#81BEF7;
+	vertical-align:center;
+	font-weight:bold;
+	margin: 10% auto;
+}
+
+div#sidebar > div#mypageContents{
+	border: solid 2px #063460;
+}
+
+div#sidebar > div#mypageContents > div.mypageTopmanage{
+	background-color:#81BEF7;
+	border-radius: 10px 10px;
+	font-weight: bold;
+	width:80%;
+	margin: 0 auto;
+	font-size: 1em;
+}
+
+div#sidebar > div#mypageContents > a.mypagelink{
+	color:black;
+	text-decoration: none;
+	font-size: 0.7em;
+	display: block;
+}

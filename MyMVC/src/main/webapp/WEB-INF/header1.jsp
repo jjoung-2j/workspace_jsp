@@ -36,7 +36,9 @@
 
 <%-- 직접 만든 JS --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
-
+<%-- 홈에서도 카테고리가 보이게 하려면 이미 생성된 것을 넣어두면 된다. 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/myshop/categoryListJSON.js"></script>
+--%>
 </head>
 <body>
 
@@ -58,6 +60,12 @@
            </li>
            <li class="nav-item active">
               <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberRegister.up">회원가입</a>
+           </li>
+           <li class="nav-item active">
+              <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeMore.up">쇼핑몰홈[더보기]</a>
+           </li>
+           <li class="nav-item active">
+              <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeScroll.up">쇼핑몰홈[스크롤]</a>
            </li>
            <%-- 관리자 전용 메뉴 만들기 전
           <li class="nav-item">
@@ -104,6 +112,10 @@
             
             <%-- === 로그인 처리하기 === --%>
             <%@ include file="/WEB-INF/login/login.jsp" %>
+            
+            <%-- == 쇼핑몰 카테고리목록만을 보여주는 부분 (header1.jsp 에만 있음) == --%>
+         	<div id="categoryList" style="margin-top: 100px;">
+         	</div>
             
          </div>
          <div id="sidecontent" style="text-align: left; padding: 20px;"></div>

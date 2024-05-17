@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/css/member/admin.css" />
     
 <%-- 직접 만든 JS --%>
-<script type="text/javascript" src="<%= ctxPath%>/js/member/admin.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/js/member/memberList.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -38,10 +38,47 @@ $(document).ready(function(){
 	
 	}
 	
+	// === 특정 회원을 클릭하면 그 회원의 상세정보를 보여주도록 한다. === //
+    $("table#memberTbl tr.memberInfo").click(e => {		// tr 로 잡았지만 td 를 클릭하면 td 로 인식
+
+        // alert($(e.target).parent().html());
+    	
+    	// const userid = $(e.target).parent().find("td.userid").text();		// 값을 알아오기
+    	// 또는
+    	const userid = $(e.target).parent().children("td.userid").text();
+    	
+    	// alert("확인용 아이디 : " + userid);
+    	
+    	const frm = document.memberOneDetail_frm;
+    	
+    	frm.userid.value = userid;	// form 태그 안 name 이 userid 에 해당 값을 넣기
+    	<%--
+	    	frm.action = "<%= ctxPath%>/member/memberOneDetail.up";
+	    	frm.action = "${pageContext.request.contextPath}/member/memberOneDetail.up"
+	    	두가지는 동일한 경로로 이동한다.
+    	--%>
+    	frm.action = "${pageContext.request.contextPath}/member/memberOneDetail.up"
+    	
+   		<%--  .jsp 파일에서 사용되어지는 것들 --%>
+    	<%--
+	  	    console.log('${pageContext.request.contextPath}');  // 컨텍스트패스   /MyMVC
+	   	    console.log('${pageContext.request.requestURL}');   // 전체 URL     http://localhost:9090/MyMVC/WEB-INF/member/admin/memberList.jsp
+	   	    console.log('${pageContext.request.scheme}');       // http        http
+	   	    console.log('${pageContext.request.serverName}');   // localhost   localhost
+	   	    console.log('${pageContext.request.serverPort}');   // 포트번호      9090
+	   	    console.log('${pageContext.request.requestURI}');   // 요청 URI     /MyMVC/WEB-INF/member/admin/memberList.jsp 
+	   	    console.log('${pageContext.request.servletPath}');  // 파일명       /WEB-INF/member/admin/memberList.jsp 
+    	--%>
+   	    
+	   	frm.method = "post";
+	   	frm.submit();
+	   	
+    })  // end of $("table#memberTbl tr.memberInfo").click(e => {-----------------
+	
 })	// end of $(document).ready(function(){}-----------------
 </script>
 
-<div class="container" style="padding: 3% 0; border:solid 1px red;">
+<div class="container" style="padding: 3% 0;">
    <h2 class="text-center mb-5">::: 회원전체 목록 :::</h2>
    <%--
    <button onclick="reflesh()" class="p-5 mx-5">
@@ -100,7 +137,7 @@ $(document).ready(function(){
       <tbody>
           <c:if test="${not empty requestScope.memberList}">
           	<c:forEach var="membervo" items="${requestScope.memberList}" varStatus="status" >
-          		<tr>
+          		<tr class="memberInfo">
           			<fmt:parseNumber var="currentShowPageNo" value="${equestScope.currentShowPageNo}" />
           			<fmt:parseNumber var="sizePerPage" value="${equestScope.sizePerPage}" />
           			<%-- fmt:parseNumber 은 문자열을 숫자형식으로 형변환 시키는 것이다. --%>
@@ -131,7 +168,7 @@ $(document).ready(function(){
 	                     12 - (3-1) * 5 - 0  =>  2
 	                     12 - (3-1) * 5 - 1  =>  1 
                  	--%>
-          			<td>${membervo.userid}</td>		<%-- get 다음 ~~ 에 오는 것을 . 뒤에 놓기 --%>
+          			<td class="userid">${membervo.userid}</td>		<%-- get 다음 ~~ 에 오는 것을 . 뒤에 놓기 --%>
           			<td>${membervo.name}</td>
           			<td>${membervo.email}</td>
           			<td>
@@ -157,8 +194,13 @@ $(document).ready(function(){
 
     <div id="pageBar">
        <nav>
-          
+          <ul class="pagination">${requestScope.pageBar}</ul>
        </nav>
     </div>
 </div>
+
+<form name="memberOneDetail_frm">
+	<input type="hidden" name="userid" />	<%-- 클릭에 따라 userid 가 잘 찍히는지 type="text" 로 확인 후 변경 --%>
+	<input type="hidden" name="goBackURL" value="${requestScope.currentURL}"/>
+</form>
 <jsp:include page="../../footer2.jsp" />

@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+div#orderlistContents > span#input_searchlist
+,div#orderlistContents > div > div#setDuration{
+	font-weight: bold;
+	font-size: 20pt;
+}
+
+div#orderlistContents > div.input_text{
+	/* border: solid 1px red; */
+	position: relative;
+	width:100%;
+	display: inline-block;
+	text-align: center;
+}
+
+div.input_text > label > input#orderlist_search{
+	box-shadow: 0px 0px 0px 1px #ddd;
+	border-radius:4px;
+	outline:none;
+	border: 0px;
+	line-height: 30px;
+	width:100%;
+}
+
+div.input_text > label > div.search_icon{
+	position:absolute;
+	cursor:pointer;
+}
+
+div.input_text img{
+	width: 20px;
+	height: 20px;
+}
+
+div#orderlistContents > div > div#Periodgroup > div.btn-group{
+	width: 80%;
+}
+
+div#orderlistContents > div > div#Periodgroup button{
+	border: solid 2px #063460;
+	font-weight: bold;
+}
+
+div#orderlistContents > div#SearchorderlistContents > div.orderdate{
+	font-weight: bold;
+	font-size: 2em;
+}
+
+div#orderlistContents > div#SearchorderlistContents > div.dateorderlist{
+	font-size: 13pt;
+}
+
+div.orderMenu, div.choiceAlltaste, div.selectMenucnt, div.selectOrderprice{
+	border-left: solid 1px #E2E2E2;
+	border-right: solid 1px #E2E2E2;
+}
+
+div#orderlist > div.orderMenu > label{
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+div.selectMenucnt  > div:first-child
+, div.selectOrderprice > div:first-child{
+	height: 100%;
+}
+
+div#orderlist > div.selectOrderprice, div#orderlist > div.Ordersituation{
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+div#orderlist > div.selectOrderprice > div > div:first-child
+, div#orderlist > div.Ordersituation > div > div:first-child{
+	margin-top: 45px;
+}

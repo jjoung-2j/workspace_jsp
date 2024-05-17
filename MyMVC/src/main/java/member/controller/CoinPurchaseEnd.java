@@ -23,7 +23,7 @@ public class CoinPurchaseEnd extends AbstractController {
 			if(login_user.getUserid().equals(userid)) {		// 로그인 한 사용자가 자신의 코인을 수정하는 경우
 				
 				String coinmoney = request.getParameter("coinmoney");
-				int productPrice = Integer.parseInt(coinmoney);
+				// int productPrice = Integer.parseInt(coinmoney);
 				
 				String productName = "새우깡";
 				// int productPrice = 50000;

@@ -51,6 +51,12 @@ public interface MemberDAO {
 	List<MemberVO> select_Member_paging(Map<String, String> paraMap) throws SQLException;
 
 	// === 검색이 있는 또는 검색이 없는 회원의 총개수 알아오기 === //
-	int getTotalMemberCount(Map<String, String> paraMap) throws SQLException;  
+	int getTotalMemberCount(Map<String, String> paraMap) throws SQLException;
+
+	// === 페이징 처리를 위한 검색이 있는 또는 검색이 없는 회원에 대한 총 페이지 수 알아오기 === //
+	int getTotalPage(Map<String, String> paraMap) throws SQLException;
+
+	// === 입력받은 userid 를 가지고 한명의 회원정보를 리턴시켜주는 메소드 === //
+	MemberVO selectOneMember(String userid) throws SQLException;  
 	
 }
